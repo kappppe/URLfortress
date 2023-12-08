@@ -1,22 +1,21 @@
-async function App() {
-  const options = {
-    headers: {
+function App() {
+  const data = async () => {
+    const options = {
       method: "GET",
-      Accept: "application/json",
-    },
+      headers: {
+        Accept: "application/json",
+      },
+    };
+    const results = await fetch("http://localhost:3000/home", options);
+    const jsonBody = await results.json();
+    console.log(jsonBody.data.abuseConfidenceScore);
   };
-  const results = await fetch(
-    "http://localhost:3000/home",
-    options
+  return (
+    <>
+      <div>Hello, world!</div>
+      <button onClick={data}>Click me!</button>
+    </>
   );
-  const jsonBody = await results.json();
-  console.log(jsonBody);
-    
-
-  return ( <div></div>)
-
 }
 
-export default App
-
-
+export default App;

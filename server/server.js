@@ -29,7 +29,7 @@ app.get("/home", async (req, res) => {
   console.log(jsonBody.data.abuseConfidenceScore);
   const score = jsonBody.data.abuseConfidenceScore;
   // res.send(${score});
-  res.send({ jsonBody });
+  res.send(jsonBody);
 });
 
 app.listen(port, console.log(`Server is running on http://localhost:${port}`));
