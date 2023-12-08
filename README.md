@@ -1,8 +1,8 @@
 # URLfortress
 
-API's
-AbuseIPdB
-IP-API
-Host-io
-PulseDive
-Google Maps
+# API's
+# AbuseIPdB
+# IP-API
+# Host-io
+# PulseDive
+# Google Maps
