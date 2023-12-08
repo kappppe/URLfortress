@@ -7,7 +7,7 @@ const port = 3000;
 app.use(cors());
 
 app.get("/", (req, res) => {
-  res.send("Hej!");
+  res.send("Hello, world!");
 });
 
 app.get("/home", async (req, res) => {
