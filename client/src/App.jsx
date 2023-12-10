@@ -6,7 +6,7 @@ function App() {
         Accept: "application/json",
       },
     };
-    const results = await fetch("http://localhost:3000/home", options);
+    const results = await fetch("http://localhost:3000/api/abuseipdb", options);
     const jsonBody = await results.json();
     console.log(jsonBody.data.abuseConfidenceScore);
   };
