@@ -15,8 +15,10 @@ app.get("/", (req, res) => {
 
 // AbuseIPDB
 app.get("/api/abuseipdb", async (req, res) => {
-  const baseURL = "https://api.abuseipdb.com/api/v2/check";
   const apiKey = process.env.abuseApiKey;
+  const baseURL = "https://api.abuseipdb.com/api/v2/check";
+  const ipAddress = "43.154.151.93";
+  const maxAgeInDays = "90";
   const options = {
     method: "GET",
     headers: {
@@ -24,7 +26,7 @@ app.get("/api/abuseipdb", async (req, res) => {
       Key: apiKey,
     },
   };
-  const query = `${baseURL}?ipAddress=43.154.151.93&maxAgeInDays=90`;
+  const query = `${baseURL}?ipAddress=${ipAddress}&maxAgeInDays=${maxAgeInDays}`;
 
   const response = await fetch(query, options);
   const jsonBody = await response.json();
