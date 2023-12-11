@@ -14,27 +14,6 @@ app.use(express.urlencoded({ extended: true }));
 const scoreRoute = require("./routes/v1/urlFortress");
 app.use("/api/v1", scoreRoute);
 
-// AbuseIPDB
-// app.get("/api/abuseipdb", async (req, res) => {
-//   const apiKey = process.env.abuseApiKey;
-//   const baseURL = "https://api.abuseipdb.com/api/v2/check";
-//   const ipAddress = "43.154.151.93";
-//   const maxAgeInDays = "90";
-//   const options = {
-//     method: "GET",
-//     headers: {
-//       Accept: "application/json",
-//       Key: apiKey,
-//     },
-//   };
-//   const query = `${baseURL}?ipAddress=${ipAddress}&maxAgeInDays=${maxAgeInDays}`;
-
-//   const response = await fetch(query, options);
-//   const jsonBody = await response.json();
-//   console.log(jsonBody);
-//   res.send(jsonBody);
-// });
-
 // Pulsedive
 app.get("/api/pulsedive", async (req, res) => {
   const apiKey = process.env.pulseApiKey;
