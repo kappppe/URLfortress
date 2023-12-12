@@ -17,7 +17,7 @@ const apiKey = process.env.abuseApiKey;
   const response = await fetch(query, options);
   const jsonBody = await response.json();
   console.log(jsonBody);
-
+  return jsonBody
 }
 
 module.exports = {
