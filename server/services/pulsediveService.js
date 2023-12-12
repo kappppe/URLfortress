@@ -1,22 +1,21 @@
-
 async function abuseQuery() {
+  const apiKey = process.env.pulseApiKey;
+  const baseURL = "https://pulsedive.com/api/info.php";
+  const indicator = "43.154.151.93";
+  const pretty = "1";
+  const queryString = `${baseURL}?indicator=${indicator}&pretty=${pretty}&key=${apiKey}`;
+  const options = {
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+    },
+  };
+  const response = await fetch(queryString, options);
+  const responseBody = await response.json();
+  console.log(responseBody);
+  return responseBody;
+}
 
-    const apiKey = process.env.pulseApiKey;
-    const baseURL = "https://pulsedive.com/api/info.php?indicator=";
-    const domain = "mau.se"
-    const options = {
-        method: "GET"
-    };
-
-    const query = `${baseURL}${domain}&pretty=1&key=${apiKey}`;
-    console.log(query);
-    
-    const response = await fetch(query, options);
-    const jsonBody = await response.json();
-    return jsonBody
-    }
-    
 module.exports = {
-    abuseQuery,
+  abuseQuery,
 };
-    
