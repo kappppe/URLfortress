@@ -1,4 +1,3 @@
-
 const {abuseQuery} = require("../services/abuseipdbService")
 
 async function getAbuseScore(req, res) { 
@@ -8,6 +7,3 @@ async function getAbuseScore(req, res) {
 module.exports = {
   getAbuseScore,
 };
-
-
-
