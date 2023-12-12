@@ -1,7 +1,5 @@
-
 async function abuseQuery() {
-
-const apiKey = process.env.abuseApiKey;
+  const apiKey = process.env.abuseApiKey;
   const baseURL = "https://api.abuseipdb.com/api/v2/check";
   const ipAddress = "43.154.151.93";
   const maxAgeInDays = "90";
@@ -17,9 +15,8 @@ const apiKey = process.env.abuseApiKey;
   const response = await fetch(query, options);
   const jsonBody = await response.json();
   console.log(jsonBody);
-
 }
 
 module.exports = {
-    abuseQuery,
-  };
+  abuseQuery,
+};
