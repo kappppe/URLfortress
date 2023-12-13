@@ -1,4 +1,4 @@
-async function abuseQuery() {
+async function pulseDiveQuery() {
   const apiKey = process.env.pulseApiKey;
   const baseURL = "https://pulsedive.com/api/info.php";
   const indicator = "43.154.151.93";
@@ -17,5 +17,5 @@ async function abuseQuery() {
 }
 
 module.exports = {
-  abuseQuery,
+  pulseDiveQuery,
 };

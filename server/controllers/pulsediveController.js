@@ -1,7 +1,7 @@
-const { abuseQuery } = require("../services/pulsediveService");
+const { pulseDiveQuery } = require("../services/pulsediveService");
 
 async function getFetchResult(req, res) {
-  const result = await abuseQuery();
+  const result = await pulseDiveQuery();
   res.send({ result });
 }
 
