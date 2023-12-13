@@ -6,7 +6,7 @@ const pulsediveController = require("../..//controllers/pulsediveController");
 const hostioController = require("../../controllers/hostioController");
 
 router.get("/abusescore", abuseScoreController.getAbuseScore);
-router.get("/pulsedivescore", pulsediveController.getFetchResult);
-router.get("/hostio", hostioController.getHostIoData);
+router.get("/pulsedivescore", pulsediveController.getPulseDiveScore);
+router.get("/hostio", hostioController.getHostIoScore);
 
 module.exports = router;

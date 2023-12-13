@@ -1,10 +1,10 @@
 const { fetchHostIo } = require("../services/hostioService");
 
-async function getHostIoData(req, res) {
+async function getHostIoScore(req, res) {
   response = await fetchHostIo();
   res.send({ response });
 }
 
 module.exports = {
-  getHostIoData,
+  getHostIoScore,
 };

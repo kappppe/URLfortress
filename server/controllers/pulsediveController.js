@@ -1,10 +1,10 @@
-const { pulseDiveQuery } = require("../services/pulsediveService");
+const { fetchPulseDive } = require("../services/pulsediveService");
 
-async function getFetchResult(req, res) {
-  const result = await pulseDiveQuery();
+async function getPulseDiveScore(req, res) {
+  const result = await fetchPulseDive();
   res.send({ result });
 }
 
 module.exports = {
-  getFetchResult,
+  getPulseDiveScore,
 };

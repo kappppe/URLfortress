@@ -1,7 +1,7 @@
-const { abuseQuery } = require("../services/abuseipdbService");
+const { fetchAbuse } = require("../services/abuseipdbService");
 
 async function getAbuseScore(req, res) {
-  const result = await abuseQuery();
+  const result = await fetchAbuse();
   res.send({ result });
 }
 

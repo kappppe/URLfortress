@@ -1,4 +1,4 @@
-async function pulseDiveQuery() {
+async function fetchPulseDive() {
   const apiKey = process.env.pulseApiKey;
   const baseURL = "https://pulsedive.com/api/info.php";
   const indicator = "43.154.151.93";
@@ -17,5 +17,5 @@ async function pulseDiveQuery() {
 }
 
 module.exports = {
-  pulseDiveQuery,
+  fetchPulseDive,
 };
