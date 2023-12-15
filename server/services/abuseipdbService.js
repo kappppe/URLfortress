@@ -14,7 +14,12 @@ async function fetchAbuse() {
 
   const response = await fetch(queryString, options);
   const jsonBody = await response.json();
-  console.log(jsonBody);
+  console.log(jsonBody.data.ipAddress);
+  // Testing custom response body for client
+  const clientResponseBody = {
+    ip: jsonBody.data.ipAddress,
+  };
+  console.log(clientResponseBody);
   return jsonBody;
 }
 
