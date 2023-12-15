@@ -12,7 +12,7 @@ async function fetchPulseDive(params) {
   };
   const response = await fetch(queryString, options);
   const responseBody = await response.json();
-  console.log(responseBody);
+  // console.log(responseBody);
   return responseBody;
 }
 

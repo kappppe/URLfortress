@@ -6,7 +6,6 @@ function App() {
   };
   const baseURL = "http://localhost:3000/api/v1/pulsedivescore/?query=";
   const queryString = `${baseURL}${query}`;
-  console.log(queryString);
   const fetchData = async () => {
     const options = {
       method: "GET",
