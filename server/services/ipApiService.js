@@ -1,6 +1,6 @@
 async function fetchIpCoordinates() {
   baseURL = "http://ip-api.com/json/";
-  query = "43.154.151.93";
+  query = "mau.se";
   queryString = `${baseURL}${query}`;
   options = {
     method: "GET",

@@ -4,7 +4,7 @@ function App() {
   const handleChange = (event) => {
     setQuery(event.target.value);
   };
-  const baseURL = "http://localhost:3000/api/v1/pulsedivescore/?query=";
+  const baseURL = "http://localhost:3000/api/v1/fullreport/?query=";
   const queryString = `${baseURL}${query}`;
   const fetchData = async () => {
     const options = {
