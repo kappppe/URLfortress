@@ -1,7 +1,7 @@
-async function fetchAbuse() {
+async function fetchAbuse(params) {
   const apiKey = process.env.abuseApiKey;
   const baseURL = "https://api.abuseipdb.com/api/v2/check";
-  const ipAddress = "43.154.151.93";
+  const ipAddress = params;
   const maxAgeInDays = "90";
   const options = {
     method: "GET",
