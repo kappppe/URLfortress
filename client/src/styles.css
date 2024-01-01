@@ -1,3 +1,44 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
 body {
-  background-color: rgb(62, 62, 88);
+  min-height: 100vh;
+  background: #18181b;
+  color: white;
+}
+a {
+  color: white;
+}
+
+.container {
+  width: 90%;
+  max-width: 1400px;
+  margin-inline: auto;
+}
+
+.flex {
+  display: flex;
+}
+.justify-between {
+  justify-content: space-between;
+}
+.items-center {
+  align-items: center;
 }
