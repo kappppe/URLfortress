@@ -14,13 +14,19 @@ async function fetchAbuse(params) {
 
   const response = await fetch(queryString, options);
   const jsonBody = await response.json();
-  console.log(jsonBody.data.ipAddress);
   // Testing custom response body for client
   const clientResponseBody = {
-    ip: jsonBody.data.ipAddress,
+    ip: jsonBody.data.ipAddress || "N/A",
+    whiteList: jsonBody.data.isWhiteListed || "N/A",
+    // Will return "N/A if score is 0 (must fix)"
+    score: jsonBody.data.abuseConfidenceScore || "N/A",
+    usage: jsonBody.data.usageType || "N/A",
+    isp: jsonBody.data.isp || "N/A",
+    domain: jsonBody.data.domain || "N/A",
   };
-  console.log(clientResponseBody);
-  return jsonBody;
+
+  // console.log(clientResponseBody);
+  return clientResponseBody;
 }
 
 module.exports = {

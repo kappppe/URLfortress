@@ -12,8 +12,16 @@ async function fetchPulseDive(params) {
   };
   const response = await fetch(queryString, options);
   const responseBody = await response.json();
-  // console.log(responseBody);
-  return responseBody;
+  console.log(responseBody);
+  const clientResponseBody = {
+    risk: responseBody.risk || "N/A",
+    riskRecommended: responseBody.risk_recommended || "N/A",
+    riskFactors: responseBody.riskfactors || "N/A",
+    threats: responseBody.threats || "N/A",
+    port: responseBody.attributes.port || "N/A",
+    protocol: responseBody.attributes.protocol || "N/A",
+  };
+  return clientResponseBody;
 }
 
 module.exports = {

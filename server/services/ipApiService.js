@@ -1,6 +1,6 @@
-async function fetchIpCoordinates() {
+async function fetchIpCoordinates(domain) {
   baseURL = "http://ip-api.com/json/";
-  query = "mau.se";
+  query = domain;
   queryString = `${baseURL}${query}`;
   options = {
     method: "GET",
@@ -10,8 +10,14 @@ async function fetchIpCoordinates() {
   };
   response = await fetch(queryString, options);
   responseBody = await response.json();
-  console.log(responseBody);
-  return responseBody;
+  // console.log(responseBody);
+  const clientResponseBody = {
+    country: responseBody.country || "N/A",
+    city: responseBody.city || "N/A",
+    lat: responseBody.lat || "N/A",
+    long: responseBody.lon || "N/A",
+  };
+  return clientResponseBody;
 }
 
 module.exports = {

@@ -12,7 +12,14 @@ async function fetchHostIo(params) {
   const response = await fetch(queryString, options);
   const responseBody = await response.json();
   // console.log(responseBody);
-  return responseBody;
+  const clientResponseBody = {
+    rank: responseBody.rank || "N/A",
+    facebook: responseBody.facebook || "N/A",
+    twitter: responseBody.twitter || "N/A",
+    instagram: responseBody.instagram || "N/A",
+    description: responseBody.description || "N/A",
+  };
+  return clientResponseBody;
 }
 
 module.exports = {
