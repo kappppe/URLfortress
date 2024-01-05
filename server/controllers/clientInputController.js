@@ -29,7 +29,7 @@ async function checkToResolve(input) {
   if (inputResults === false) {
     return await resolveDns(input);
   } else if (inputResults === true) {
-    return false;
+    return input;
   } else {
     console.log("Invalid input");
     return null;
