@@ -37,14 +37,14 @@ function Searchbar() {
         Search
       </button>
 
-      {Object.keys(responseData).length > 0 && (
+      {/* {Object.keys(responseData).length > 0 && (
         <div>
           <h2>Host Io Result</h2>
           <p>Rank: {responseData.hostIoResult.rank}</p>
           <p>Facebook: {responseData.hostIoResult.facebook}</p>
           <p>Twitter: {responseData.hostIoResult.twitter}</p>
         </div>
-      )}
+      )} */}
     </>
   );
 }

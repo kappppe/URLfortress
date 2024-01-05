@@ -11,20 +11,17 @@ async function fetchFullReport(req, res) {
 
   let response = {};
 
-  if (resolvedResult !== true) {
+  if (resolvedResult === false) {
+    response.pulseDiveResult = await fetchPulseDive(params);
+    response.abuseResult = await fetchAbuse(params);
+    response.ipApiResult = await fetchIpCoordinates(params);
+    console.log(resolvedResult);
+  } else if (resolvedResult !== null) {
     response.hostIoResult = await fetchHostIo(params);
     response.pulseDiveResult = await fetchPulseDive(resolvedResult);
     response.abuseResult = await fetchAbuse(resolvedResult);
     response.ipApiResult = await fetchIpCoordinates(resolvedResult);
-
-    console.log(`Resolved result: ${resolvedResult}`);
-  } else if (resolvedResult !== false) {
-    const hostIoResult = await fetchHostIo(params);
   }
-  console.log(response.abuseResult);
-  console.log(response.pulseDiveResult);
-  console.log(response.ipApiResult);
-  console.log(response.hostIoResult);
 
   res.send(response);
 }

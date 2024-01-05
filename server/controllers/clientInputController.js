@@ -4,35 +4,44 @@ function inputIpCheck(input) {
   const domainAddress = /^(https?:\/\/)?(www\.)?[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
   if (ipAddress.test(input)) {
-    return true;
+    return false;
   }
   if (domainAddress.test(input)) {
-    return false;
+    return true;
   }
   return null;
 }
 
 async function resolveDns(domain) {
-  return new Promise((resolve, reject) => {
-    dns.resolve(domain, (error, addresses) => {
-      if (error) {
-        reject(`An error occurred: ${error.message}`);
-      } else {
-        resolve(addresses[0]);
-      }
+  try {
+    return new Promise((resolve, reject) => {
+      dns.resolve(domain, (error, addresses) => {
+        if (error) {
+          reject(`An error occurred: ${error.message}`);
+        } else {
+          resolve(addresses[0]);
+        }
+      });
     });
-  });
+  } catch (error) {
+    console.error(`Error in resolveDns: ${error.message}`);
+    throw error;
+  }
 }
-
 async function checkToResolve(input) {
-  const inputResults = inputIpCheck(input);
-  if (inputResults === false) {
-    return await resolveDns(input);
-  } else if (inputResults === true) {
-    return input;
-  } else {
-    console.log("Invalid input");
-    return null;
+  try {
+    const inputResults = inputIpCheck(input);
+    if (inputResults === false) {
+      return false;
+    } else if (inputResults === true) {
+      return await resolveDns(input);
+    } else {
+      console.log("Invalid input");
+      return null;
+    }
+  } catch (error) {
+    console.error(`Error in checkToResolve: ${error.message}`);
+    throw error;
   }
 }
 
