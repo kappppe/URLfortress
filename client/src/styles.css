@@ -42,3 +42,48 @@ a {
 .items-center {
   align-items: center;
 }
+/* ----------------------------------------------------- */
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+input {
+  width: 200px;
+  padding: 8px;
+  margin-bottom: 16px;
+}
+
+button {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.response-container {
+  margin-top: 16px;
+}
+
+.field {
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  padding: 12px;
+  border-radius: 4px;
+}
+
+.field-title {
+  margin-bottom: 8px;
+  font-size: 18px;
+}
+
+.field-value {
+  margin: 0;
+}
+
+.nested-fields {
+  margin-left: 16px;
+}

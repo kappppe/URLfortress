@@ -8,8 +8,6 @@ async function fetchFullReport(req, res) {
   try {
     const params = req.param("query");
     const resolvedResult = await checkToResolve(params);
-    console.log(resolvedResult);
-
     let response = {};
 
     if (resolvedResult === false) {

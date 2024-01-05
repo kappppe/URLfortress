@@ -28,6 +28,20 @@ function Searchbar() {
       console.error("Error fetching data:", error);
     }
   };
+  const renderField = (fieldKey, fieldValue) => (
+    <div className="field" key={fieldKey}>
+      <h3 className="field-title">{fieldKey}</h3>
+      {typeof fieldValue === "object" ? (
+        <div className="nested-fields">
+          {Object.entries(fieldValue).map(([key, value]) =>
+            renderField(key, value)
+          )}
+        </div>
+      ) : (
+        <p className="field-value">{`${fieldKey}: ${fieldValue || "N/A"}`}</p>
+      )}
+    </div>
+  );
 
   return (
     <>
@@ -37,14 +51,13 @@ function Searchbar() {
         Search
       </button>
 
-      {/* {Object.keys(responseData).length > 0 && (
-        <div>
-          <h2>Host Io Result</h2>
-          <p>Rank: {responseData.hostIoResult.rank}</p>
-          <p>Facebook: {responseData.hostIoResult.facebook}</p>
-          <p>Twitter: {responseData.hostIoResult.twitter}</p>
+      {Object.keys(responseData).length > 0 && (
+        <div className="response-container">
+          {Object.entries(responseData).map(([key, value]) =>
+            renderField(key, value)
+          )}
         </div>
-      )} */}
+      )}
     </>
   );
 }
