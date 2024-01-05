@@ -1,4 +1,6 @@
 const dns = require("dns");
+const { fetchPulseDive } = require("../services/pulsediveService");
+
 function inputIpCheck(input) {
   const ipAddress = /^(\d{1,3}\.){3}\d{1,3}$/;
   const domainAddress = /^(https?:\/\/)?(www\.)?[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -24,12 +26,25 @@ async function resolveDns(domain) {
   });
 }
 
+async function getDomainFromIp(ip) {
+
+  try {
+    const result = await fetchPulseDive(ip);
+    const domain = result.domain;
+    return domain;
+  } catch (error) {
+    console.error(`Error fetching domain for IP ${ip}: ${error.message}`);
+    throw error; 
+  }
+}
+
 async function checkToResolve(input) {
+  console.log(input);
   const inputResults = inputIpCheck(input);
   if (inputResults === false) {
     return await resolveDns(input);
   } else if (inputResults === true) {
-    return false;
+    return await getDomainFromIp(input);
   } else {
     console.log("Invalid input");
     return null;
