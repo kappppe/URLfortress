@@ -36,7 +36,6 @@ async function checkToResolve(input) {
     } else if (inputResults === true) {
       return await resolveDns(input);
     } else {
-      console.log("Invalid input");
       return null;
     }
   } catch (error) {
