@@ -15,7 +15,7 @@ function MapComponent() {
 
     // Load the Google Maps API script
     const script = document.createElement('script');
-    script.src = `https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap`;
+    script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyBUJpYWOqCM9EwE6vjP4wReHNt6wqX7yps&callback=initMap`;
     script.async = true;
     document.body.appendChild(script);
 
