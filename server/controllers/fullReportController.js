@@ -8,6 +8,7 @@ async function fetchFullReport(req, res) {
   try {
     const params = req.param("query");
     const resolvedResult = await checkToResolve(params);
+    console.log(resolvedResult);
     let response = {};
 
     if (resolvedResult === false) {
@@ -29,8 +30,8 @@ async function fetchFullReport(req, res) {
     // res.send(response)
     res.status(200).json(response);
   } catch (error) {
-    // if (resolvedResult === null)
-    if (error.message.includes("invalid input")) {
+    // Needs fixing so that it responds with same error for invalid domain name
+    if (error && error.message && error.message.includes("invalid input")) {
       res.status(400).json({ error: "Please enter a valid domain/ip" });
     } else {
       res.status(500).json({ error: "Internal server error" });

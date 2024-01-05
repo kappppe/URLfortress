@@ -32,7 +32,6 @@ async function fetchAbuse(params) {
       isp: jsonBody.data.isp || "N/A",
       domain: jsonBody.data.domain || "N/A",
     };
-
     return clientResponseBody;
   } catch (error) {
     console.error("Error in fetchAbuse service:", error);
