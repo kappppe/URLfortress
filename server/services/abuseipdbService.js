@@ -18,8 +18,8 @@ async function fetchAbuse(params) {
   const clientResponseBody = {
     ip: jsonBody.data.ipAddress || "N/A",
     whiteList: jsonBody.data.isWhiteListed || "N/A",
-    // Will return "N/A if score is 0 (must fix)"
-    score: jsonBody.data.abuseConfidenceScore || "N/A",
+    // Checks explicitly for null and 0 and returns correct value"
+    score: (jsonBody.data.abuseConfidenceScore === null) ? "N/A" : (jsonBody.data.abuseConfidenceScore === 0 ? 0 : jsonBody.data.abuseConfidenceScore),
     usage: jsonBody.data.usageType || "N/A",
     isp: jsonBody.data.isp || "N/A",
     domain: jsonBody.data.domain || "N/A",

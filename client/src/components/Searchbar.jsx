@@ -43,6 +43,7 @@ function Searchbar() {
           <p>Rank: {responseData.hostIoResult.rank}</p>
           <p>Facebook: {responseData.hostIoResult.facebook}</p>
           <p>Twitter: {responseData.hostIoResult.twitter}</p>
+          <p>score: {responseData.abuseResult.score}</p>
         </div>
       )}
     </>
