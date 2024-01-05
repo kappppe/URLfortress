@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
+const mapController = require("../../controllers/mapController");
 const abuseScoreController = require("../../controllers/abuseipdbController");
 const pulsediveController = require("../..//controllers/pulsediveController");
 const hostioController = require("../../controllers/hostioController");
@@ -8,6 +9,7 @@ const threatInfo = require("../../controllers/threatInfo"); //threat info from p
 const ipApiController = require("../../controllers/ipApiController");
 const fullReportController = require("../../controllers/fullReportController");
 
+router.get("/map", mapController.getMapScore);
 router.get("/abusescore", abuseScoreController.getAbuseScore);
 router.get("/pulsedivescore", pulsediveController.getPulseDiveScore);
 router.get("/hostio", hostioController.getHostIoScore);

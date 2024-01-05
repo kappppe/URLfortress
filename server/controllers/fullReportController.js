@@ -4,9 +4,8 @@ const { fetchAbuse } = require("../services/abuseipdbService");
 const { checkToResolve } = require("./clientInputController");
 const { fetchIpCoordinates } = require("../services/ipApiService");
 
-async function fetchFullReport(req, res) {
+async function fetchFullReport(req, res) {    
   const params = req.param("query");
-  console.log(params + " hej");
   const resolvedResult = await checkToResolve(params);
   console.log(resolvedResult);
 
