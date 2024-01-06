@@ -18,8 +18,8 @@ async function fetchPulseDive(params) {
     riskRecommended: responseBody.risk_recommended || "N/A",
     riskFactors: responseBody.riskfactors || "N/A",
     threats: responseBody.threats || "N/A",
-    // port: responseBody.attributes.port || "N/A",
-    protocol: responseBody.attributes.protocol || "N/A",
+    port: responseBody.port || "N/A",
+    protocol: responseBody.protocol || "N/A",
   };
   return clientResponseBody;
 }
