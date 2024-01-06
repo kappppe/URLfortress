@@ -26,12 +26,13 @@ async function fetchAbuse(params) {
     const clientResponseBody = {
       ip: jsonBody.data.ipAddress || "N/A",
       whiteList: jsonBody.data.isWhiteListed || "N/A",
-      // Will return "N/A if score is 0 (must fix)"
+      // Will return "N/A if score is 0 || false (must fix)"
       score: jsonBody.data.abuseConfidenceScore || "N/A",
       usage: jsonBody.data.usageType || "N/A",
       isp: jsonBody.data.isp || "N/A",
       domain: jsonBody.data.domain || "N/A",
     };
+    console.log(jsonBody);
     return clientResponseBody;
   } catch (error) {
     console.error("Error in fetchAbuse service:", error);

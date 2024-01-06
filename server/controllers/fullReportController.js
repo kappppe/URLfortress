@@ -31,6 +31,7 @@ async function fetchFullReport(req, res) {
     res.status(200).json(response);
   } catch (error) {
     // Needs fixing so that it responds with same error for invalid domain name
+    // Needs fixing so that ex, missing data from pulsedive doesn't crash server
     if (error && error.message && error.message.includes("invalid input")) {
       res.status(400).json({ error: "Please enter a valid domain/ip" });
     } else {
