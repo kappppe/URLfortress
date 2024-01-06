@@ -21,7 +21,7 @@ const MapContainer = ({ center }) => {
   return (
     <div style={{ height: "50vh", width: "40%" }}>
       <GoogleMapReact
-        bootstrapURLKeys={{ key: "AIzaSyBUJpYWOqCM9EwE6vjP4wReHNt6wqX7yps" }}
+        bootstrapURLKeys={{ key: "AIzaSyCIfZP-bCxWS4x3Dz-TKbAb39sRPqHl8sk" }}
         // defaultCenter={{ lat: center.lat, lng: center.long }}
         center={{ lat: center.lat, lng: center.long }}
         defaultZoom={defaultProps.zoom}
