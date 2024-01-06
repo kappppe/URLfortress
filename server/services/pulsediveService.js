@@ -18,7 +18,7 @@ async function fetchPulseDive(params) {
       );
     }
     const responseBody = await response.json();
-    console.log(responseBody);
+    // console.log(responseBody);
     const clientResponseBody = {
       risk: responseBody.risk || "N/A",
       riskRecommended: responseBody.risk_recommended || "N/A",

@@ -1,4 +1,5 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import SimpleMap from "./MapContainer";
 
 function Searchbar() {
   const [query, setQuery] = useState("");
@@ -28,20 +29,6 @@ function Searchbar() {
       console.error("Error fetching data:", error);
     }
   };
-  const renderField = (fieldKey, fieldValue) => (
-    <div className="field" key={fieldKey}>
-      <h3 className="field-title">{fieldKey}</h3>
-      {typeof fieldValue === "object" ? (
-        <div className="nested-fields">
-          {Object.entries(fieldValue).map(([key, value]) =>
-            renderField(key, value)
-          )}
-        </div>
-      ) : (
-        <p className="field-value">{`${fieldKey}: ${fieldValue || "N/A"}`}</p>
-      )}
-    </div>
-  );
 
   return (
     <>
@@ -51,12 +38,26 @@ function Searchbar() {
         Search
       </button>
 
-      {Object.keys(responseData).length > 0 && (
-        <div className="response-container">
-          {Object.entries(responseData).map(([key, value]) =>
-            renderField(key, value)
+      {Object.keys(responseData).length > 0 ? (
+        <div>
+          <h2>Host Io Result</h2>
+          <p>Rank: {responseData.hostIoResult?.rank}</p>
+          <p>Facebook: {responseData.hostIoResult?.facebook}</p>
+          <p>Twitter: {responseData.hostIoResult?.twitter}</p>
+          <p>score: {responseData.abuseResult?.score}</p>
+          <p>risk: {responseData.pulseDiveResult?.risk}</p>
+          {responseData.abuseResult?.whiteList !== undefined && (
+            <p>whitelisted: {String(responseData.abuseResult?.whiteList)}</p>
+          )}
+          {/* Conditionally render the map */}
+          {responseData.ipApiResult ? (
+            <SimpleMap center={responseData.ipApiResult} />
+          ) : (
+            <p>Loading map...</p>
           )}
         </div>
+      ) : (
+        <p>No data available. Please perform a search.</p>
       )}
     </>
   );

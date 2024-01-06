@@ -53,33 +53,15 @@ input {
   width: 200px;
   padding: 8px;
   margin-bottom: 16px;
+  color: rgb(219, 224, 222);
+  background-color: gray;
+  outline: none;
+  border: none;
+  margin-inline: 15px;
+  border-radius: 5px;
 }
 
 button {
   padding: 8px;
   cursor: pointer;
-}
-
-.response-container {
-  margin-top: 16px;
-}
-
-.field {
-  margin-bottom: 16px;
-  border: 1px solid #ccc;
-  padding: 12px;
-  border-radius: 4px;
-}
-
-.field-title {
-  margin-bottom: 8px;
-  font-size: 18px;
-}
-
-.field-value {
-  margin: 0;
-}
-
-.nested-fields {
-  margin-left: 16px;
 }
