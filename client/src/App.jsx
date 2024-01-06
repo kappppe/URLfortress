@@ -1,12 +1,12 @@
 import Navbar from "./components/Navbar";
 import Searchbar from "./components/Searchbar";
-import Mapbar from "./components/Mapbar";
+import SimpleMap from "./components/MapContainer";
 function App() {
   return (
     <>
       <Navbar />
       <Searchbar />
-      <Mapbar />
+      <SimpleMap />
     </>
   );
 }
