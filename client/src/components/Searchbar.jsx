@@ -1,6 +1,11 @@
 import { useState } from "react";
+import SimpleMap from "./MapContainer";
 
 function Searchbar() {
+
+  const lat = 60.0000;
+  const lon = 20.0000;
+
   const [query, setQuery] = useState("");
   const [responseData, setResponseData] = useState({});
 
@@ -31,6 +36,7 @@ function Searchbar() {
 
   return (
     <>
+      <SimpleMap ref={mapRef} />
       <label>Please, input the ip/domain address:</label>
       <input onChange={handleChange}></input>
       <button type="button" onClick={fetchData}>
