@@ -9,7 +9,6 @@ function Searchbar() {
     setQuery(event.target.value);
   };
 
-  // Added key press event listener for the 'Enter' key
   const handleKeyPress = (event) => {
     if (event.key === "Enter") {
       fetchData();
@@ -51,7 +50,6 @@ function Searchbar() {
       {Object.keys(responseData).length > 0 ? (
         <div>
           <h2>Host Io Result</h2>
-client-input
           <p>Rank: {responseData.hostIoResult?.rank}</p>
           <p>Facebook: {responseData.hostIoResult?.facebook}</p>
           <p>Twitter: {responseData.hostIoResult?.twitter}</p>
@@ -76,4 +74,3 @@ client-input
 }
 
 export default Searchbar;
-

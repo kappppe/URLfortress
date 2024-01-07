@@ -21,7 +21,7 @@ img {
 body {
   min-height: 100vh;
   background: #18181b;
-  color: rgb(157, 255, 206);
+  color: rgb(237, 237, 237);
 }
 a {
   color: white;
@@ -66,4 +66,3 @@ button {
   padding: 8px;
   cursor: pointer;
 }
-

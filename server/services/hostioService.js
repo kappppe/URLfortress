@@ -17,6 +17,9 @@ async function fetchHostIo(params) {
       );
     }
     const responseBody = await response.json();
+
+    console.log('HOST IO HOST IO HOST IO HOST IO HOST IO HOST IO HOST IO HOST IO HOST IO:', responseBody);
+
     const clientResponseBody = {
       rank: responseBody.rank ?? "N/A",
       facebook: responseBody.facebook ?? "N/A",
