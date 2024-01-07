@@ -15,15 +15,12 @@ async function fetchAbuse(params) {
 
     const response = await fetch(queryString, options);
     if (!response.ok) {
-      // What is response.status?
       throw new Error(
         `Failed to fetch abuse information. Status: ${response.status}`
       );
-      console.log(response.status);
     }
 
     const jsonBody = await response.json();
-    console.log(jsonBody);
     const clientResponseBody = {
       ip: jsonBody.data.ipAddress ?? "N/A",
       score: jsonBody.data.abuseConfidenceScore ?? "N/A",

@@ -12,28 +12,29 @@ async function fetchPulseDive(params) {
       },
     };
     const response = await fetch(queryString, options);
+
     if (!response.ok) {
-      throw new Error(
+      console.error(
         `Failed to fetch pulsedive information. Status: ${response.status}`
       );
     }
+
     const responseBody = await response.json();
-    // console.log(responseBody);
     const clientResponseBody = {
-      risk: responseBody.risk || "N/A",
-      riskRecommended: responseBody.risk_recommended || "N/A",
-      riskFactors: responseBody.riskfactors || "N/A",
-      threats: responseBody.threats || "N/A",
-      port: responseBody.port || "N/A",
-      protocol: responseBody.protocol || "N/A",
+      risk: responseBody.risk ?? "N/A",
+      riskRecommended: responseBody.risk_recommended ?? "N/A",
+      riskFactors: responseBody.riskfactors ?? "N/A",
+      threats: responseBody.threats ?? "N/A",
+      port: responseBody.port ?? "N/A",
+      protocol: responseBody.protocol ?? "N/A",
     };
+
     return clientResponseBody;
   } catch (error) {
     console.error("Error in pulsedive service:", error);
-    throw error;
+    return null;
   }
 }
-
 module.exports = {
   fetchPulseDive,
 };

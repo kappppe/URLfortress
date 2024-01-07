@@ -14,6 +14,7 @@ const MapContainer = ({ center }) => {
   };
 
   // Check if the center coordinates are defined before rendering the map
+  // NEEDS FIXING, if coordinates == "N/A" --> error
   if (!center || !center.lat || !center.long) {
     return <p>Loading map...</p>;
   }

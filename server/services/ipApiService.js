@@ -16,12 +16,11 @@ async function fetchIpCoordinates(domain) {
       );
     }
     responseBody = await response.json();
-    // console.log(responseBody);
     const clientResponseBody = {
-      country: responseBody.country || "N/A",
-      city: responseBody.city || "N/A",
-      lat: responseBody.lat || "N/A",
-      long: responseBody.lon || "N/A",
+      country: responseBody.country ?? "N/A",
+      city: responseBody.city ?? "N/A",
+      lat: responseBody.lat ?? "N/A",
+      long: responseBody.lon ?? "N/A",
     };
     return clientResponseBody;
   } catch (error) {

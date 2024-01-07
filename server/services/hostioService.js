@@ -17,13 +17,12 @@ async function fetchHostIo(params) {
       );
     }
     const responseBody = await response.json();
-    // console.log(responseBody);
     const clientResponseBody = {
-      rank: responseBody.rank || "N/A",
-      facebook: responseBody.facebook || "N/A",
-      twitter: responseBody.twitter || "N/A",
-      instagram: responseBody.instagram || "N/A",
-      description: responseBody.description || "N/A",
+      rank: responseBody.rank ?? "N/A",
+      facebook: responseBody.facebook ?? "N/A",
+      twitter: responseBody.twitter ?? "N/A",
+      instagram: responseBody.instagram ?? "N/A",
+      description: responseBody.description ?? "N/A",
     };
     return clientResponseBody;
   } catch (error) {
