@@ -26,7 +26,6 @@ async function resolveDns(domain) {
 }
 
 async function checkToResolve(input) {
-
   try {
     const inputResults = inputIpCheck(input);
     if (inputResults === false) {

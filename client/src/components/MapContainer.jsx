@@ -22,7 +22,6 @@ const MapContainer = ({ center }) => {
   const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
   return (
     <div style={{ height: "50vh", width: "40%" }}>
-main
       <GoogleMapReact
         bootstrapURLKeys={{ key: apiKey }}
         // defaultCenter={{ lat: center.lat, lng: center.long }}
@@ -35,7 +34,6 @@ main
           lat={center.lat}
           lng={center.long}
           text="My Marker"
-
         />
       </GoogleMapReact>
     </div>
@@ -43,4 +41,3 @@ main
 };
 
 export default MapContainer;
-
