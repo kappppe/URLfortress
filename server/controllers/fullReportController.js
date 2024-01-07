@@ -21,10 +21,10 @@ async function fetchFullReport(req, res) {
   } else if (resolvedResult !== false) {
     const hostIoResult = await fetchHostIo(params);
   }
-  console.log(response.abuseResult);
-  console.log(response.pulseDiveResult);
-  console.log(response.ipApiResult);
-  console.log(response.hostIoResult);
+  //console.log(response.abuseResult);
+  //console.log(response.pulseDiveResult);
+  //console.log(response.ipApiResult);
+  //console.log(response.hostIoResult);
 
   res.send(response);
 }

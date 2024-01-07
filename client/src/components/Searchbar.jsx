@@ -57,6 +57,8 @@ function Searchbar() {
           <p>score: {responseData.abuseResult.score}</p>
           <h2>Pulse</h2>
           <h2>Abuse</h2>
+          <p>ip: {responseData.abuseResult.ip}</p>
+          <p>whiteList: {responseData.abuseResult.whiteList}</p>
           <h2>IP Api</h2>
 
 
