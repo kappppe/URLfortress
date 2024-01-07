@@ -38,7 +38,7 @@ function Searchbar() {
 
   return (
     <>
-      <label>Please, input the ip/domain address:</label>
+      <label>search on ip or domain</label>
       <input
         onChange={handleChange}
         onKeyPress={handleKeyPress} // Added event listener for key press
@@ -50,8 +50,10 @@ function Searchbar() {
       {Object.keys(responseData).length > 0 ? (
         <div>
           <h3>General information</h3>
-          {/* <p>domain: {responseData.pulseDiveResult.domain} </p> */}
+          <p>domain: {responseData.pulseDiveResult.domain} </p>
           <p>protocols: {responseData.pulseDiveResult.protocols} </p>
+          <p>technologies: {responseData.pulseDiveResult.technologies} </p>
+          <br />
 
 
           <h3>Security information</h3>
@@ -67,6 +69,9 @@ function Searchbar() {
           {responseData.abuseResult?.whiteList !== undefined && (
             <p>whitelisted: {String(responseData.abuseResult?.whiteList)}</p>
           )}
+          <p>threat occured: {responseData.pulseDiveResult.threat}</p>
+          <p>Wiki summary on { responseData.pulseDiveResult.threat + ": " + responseData.pulseDiveResult.wikisummary+""}</p>  
+          <br />
         
 
           <h3>Location information</h3>
@@ -74,6 +79,7 @@ function Searchbar() {
           <p>city: { responseData.ipApiResult.city}</p>
           <p>zip: { responseData.ipApiResult.zip}</p>
           <p>address: { responseData.pulseDiveResult.address}</p>
+          <br />
 
           {/* Conditionally render the map */}
           {responseData.ipApiResult ? (
