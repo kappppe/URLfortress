@@ -16,6 +16,9 @@ async function fetchIpCoordinates(domain) {
       );
     }
     responseBody = await response.json();
+
+    console.log('IP-API IP-API IP-API IP-API IP-API IP-API IP-API IP-API IP-API IP-API:', responseBody);
+
     const clientResponseBody = {
       country: responseBody.country ?? "N/A",
       city: responseBody.city ?? "N/A",
