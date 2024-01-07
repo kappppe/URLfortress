@@ -17,23 +17,25 @@ async function fetchPulseDive(params) {
       console.error(
         `Failed to fetch pulsedive information. Status: ${response.status}`
       );
+      return null;
     }
 
     const responseBody = await response.json();
 
-    console.log("PULSE PULSE PULSE");
+    console.log("PULSE PULSE PULSE PULSE PULSE PULSE PULSE PULSE PULSE ");
+
+    let wikiSummary = "N/A";
     if (responseBody.threats && responseBody.threats.length > 0) {
 
-      const threatName = responseBody.threats[0].name;  //first threat
+      const threatName = responseBody.threats[0].name;  //get first threat (if any)
       console.log('Threat Name:', threatName);
 
-      const wikiSummary = await fetchThreatInfo(threatName);
-
-      // Add wikiSummary to clientResponseBody
-      responseBody.wikisummary = wikiSummary;
+      wikiSummary = await fetchThreatInfo(threatName);
+      console.log('Wiki Summary:', wikiSummary);
     } else {
       console.log('No threats found in the response.');
     }
+
     console.log(responseBody);
 
     const clientResponseBody = {
@@ -43,7 +45,7 @@ async function fetchPulseDive(params) {
       threats: responseBody.threats ?? "N/A",
       port: responseBody.port ?? "N/A",
       protocol: responseBody.protocol ?? "N/A",
-      wikisummary: responseBody.wikisummary ?? "N/A", // Add wikisummary to clientResponseBody
+      wikisummary: wikiSummary,
     };
 
     return clientResponseBody;
@@ -54,25 +56,36 @@ async function fetchPulseDive(params) {
 }
 
 async function fetchThreatInfo(indicator) {
-  const apiKey = process.env.pulseApiKey;
-  const baseURL = "https://pulsedive.com/api/info.php";
-  const pretty = "1";
-  const queryString = `${baseURL}?threat=${indicator}&pretty=${pretty}&key=${apiKey}`;
-  const options = {
-    method: "GET",
-    headers: {
-      Accept: "application/json",
-    },
-  };
-  const response = await fetch(queryString, options);
-  const responseBody = await response.json();
+  if (!indicator) {
+    console.log('No threat indicator provided.');
+    return "N/A";
+  }
 
-  const wikisummary = responseBody.wikisummary;
-  console.log(`Wiki Summary: ${wikisummary}`);
-  return wikisummary;
+  try {
+    const apiKey = process.env.pulseApiKey;
+    const baseURL = "https://pulsedive.com/api/info.php";
+    const pretty = "1";
+    const queryString = `${baseURL}?threat=${indicator}&pretty=${pretty}&key=${apiKey}`;
+    const options = {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+      },
+    };
+    const response = await fetch(queryString, options);
+    const responseBody = await response.json();
+
+    const wikisummary = responseBody.wikisummary;
+    console.log(`Wiki Summary: ${wikisummary}`);
+    return wikisummary;
+  } catch (error) {
+    console.error("Error in fetchThreatInfo:", error);
+    return "N/A";
+  }
 }
 
 module.exports = {
   fetchPulseDive,
   fetchThreatInfo,
 };
+
