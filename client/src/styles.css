@@ -8,11 +8,6 @@
   margin: 0;
 }
 
-img {
-  max-width: 100%;
-  display: block;
-}
-
 body {
   min-height: 100vh;
   background: #18181b;
@@ -49,8 +44,8 @@ input {
   width: 200px;
   padding: 8px;
   margin-bottom: 16px;
-  color: rgb(219, 224, 222);
-  background-color: gray;
+  color: rgb(255, 255, 255);
+  background-color: rgb(67, 67, 67);
   outline: none;
   border: none;
   margin-inline: 15px;
@@ -63,7 +58,7 @@ button {
 }
 
 /* ---------Google maps pin------------- */
-/* .pin {
+.pin {
   width: 30px;
   height: 30px;
   border-radius: 50% 50% 50% 0;
@@ -73,9 +68,6 @@ button {
   left: 50%;
   top: 50%;
   margin: -20px 0 0 -20px;
-  animation-name: bounce;
-  animation-fill-mode: both;
-  animation-duration: 1s;
 }
 
 .pin:after {
@@ -108,7 +100,7 @@ button {
   width: 40px;
   position: absolute;
   margin: -18px 0 0 -20px;
-  animation: pulsate 1s ease-out;
+  animation: pulsate 2s ease-out;
   animation-iteration-count: infinite;
   opacity: 0;
   box-shadow: 0 0 1px 2px #89849b;
@@ -128,20 +120,3 @@ button {
     opacity: 0;
   }
 }
-
-@keyframes bounce {
-  0% {
-    opacity: 0;
-    transform: translateY(-2000px) rotate(-45deg);
-  }
-  60% {
-    opacity: 1;
-    transform: translateY(0px) rotate(-45deg);
-  }
-  80% {
-    transform: translateY(0px) rotate(-45deg);
-  }
-  100% {
-    transform: translateY(0) rotate(-45deg);
-  }
-} */

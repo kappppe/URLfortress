@@ -39,8 +39,11 @@ function Searchbar() {
   return (
     <>
       <section className="container">
-        <label>Please, input the ip/domain address:</label>
-        <input onChange={handleChange} onKeyPress={handleKeyPress}></input>
+        <input
+          onChange={handleChange}
+          onKeyPress={handleKeyPress}
+          placeholder="Enter URL/IP-address here..."
+        ></input>
         <button type="button" onClick={fetchData}>
           Search
         </button>
