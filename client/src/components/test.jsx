@@ -1,7 +1,7 @@
 import React from "react";
 import GoogleMapReact from "google-map-react";
 
-const AnyReactComponent = ({ text }) => (
+const AnyReactComponent = ({ lat, lng, text }) => (
   <div
     style={{
       color: "white",
@@ -192,6 +192,7 @@ const MapContainer = ({ center }) => {
     <div style={{ height: "50vh", width: "40%" }}>
       <GoogleMapReact
         bootstrapURLKeys={{ key: apiKey }}
+        // center={{ lat: 59.95, lng: 30.33 }}
         center={{ lat: center.lat, lng: center.long }}
         defaultZoom={defaultProps.zoom}
         yesIWantToUseGoogleMapApiInternals
@@ -199,7 +200,7 @@ const MapContainer = ({ center }) => {
           styles: combinedStyles,
         }}
         // draggable={false}
-        // onGoogleApiLoaded={({ map, maps }) => handleApiLoaded(map, maps)}
+        onGoogleApiLoaded={({ map, maps }) => handleApiLoaded(map, maps)}
       >
         <AnyReactComponent
           lat={center.lat}
