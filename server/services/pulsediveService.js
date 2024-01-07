@@ -20,18 +20,6 @@ async function fetchPulseDive(params) {
     }
 
     const responseBody = await response.json();
-
-    //console.log('PULSE PULSE PULSE PULSE PULSE PULSE PULSE PULSE PULSE PULSE :', responseBody.threats.name);
-
-    console.log("PULSE PULSE PULSE");
-    if (responseBody.threats && responseBody.threats.length > 0) {
-      // Access the name of the first threat in the array
-      const threatName = responseBody.threats[0].name;
-      console.log('Threat Name:', threatName);
-    } else {
-      console.log('No threats found in the response.');
-    }
-
     const clientResponseBody = {
       risk: responseBody.risk ?? "N/A",
       riskRecommended: responseBody.risk_recommended ?? "N/A",

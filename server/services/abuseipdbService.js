@@ -21,9 +21,6 @@ async function fetchAbuse(params) {
     }
 
     const jsonBody = await response.json();
-
-    console.log('ABUSE IP ABUSE IP ABUSE IP ABUSE IP ABUSE IP ABUSE IP ABUSE IP ABUSE IP:', jsonBody);
-
     const clientResponseBody = {
       ip: jsonBody.data.ipAddress ?? "N/A",
       score: jsonBody.data.abuseConfidenceScore ?? "N/A",
