@@ -50,11 +50,15 @@ function Searchbar() {
 
       {Object.keys(responseData).length > 0 ? (
         <div>
-          <h2>Host Io Result</h2>
+          <h2>HostIo</h2>
           <p>Rank: {responseData.hostIoResult.rank}</p>
           <p>Facebook: {responseData.hostIoResult.facebook}</p>
           <p>Twitter: {responseData.hostIoResult.twitter}</p>
           <p>score: {responseData.abuseResult.score}</p>
+          <h2>Pulse</h2>
+          <h2>Abuse</h2>
+          <h2>IP Api</h2>
+
 
           {/* Conditionally render the map */}
           {responseData.ipApiResult ? (
