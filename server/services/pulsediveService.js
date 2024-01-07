@@ -21,16 +21,20 @@ async function fetchPulseDive(params) {
 
     const responseBody = await response.json();
 
-    //console.log('PULSE PULSE PULSE PULSE PULSE PULSE PULSE PULSE PULSE PULSE :', responseBody.threats.name);
-
     console.log("PULSE PULSE PULSE");
     if (responseBody.threats && responseBody.threats.length > 0) {
-      // Access the name of the first threat in the array
-      const threatName = responseBody.threats[0].name;
+
+      const threatName = responseBody.threats[0].name;  //first threat
       console.log('Threat Name:', threatName);
+
+      const wikiSummary = await fetchThreatInfo(threatName);
+
+      // Add wikiSummary to clientResponseBody
+      responseBody.wikisummary = wikiSummary;
     } else {
       console.log('No threats found in the response.');
     }
+    console.log(responseBody);
 
     const clientResponseBody = {
       risk: responseBody.risk ?? "N/A",
@@ -39,6 +43,7 @@ async function fetchPulseDive(params) {
       threats: responseBody.threats ?? "N/A",
       port: responseBody.port ?? "N/A",
       protocol: responseBody.protocol ?? "N/A",
+      wikisummary: responseBody.wikisummary ?? "N/A", // Add wikisummary to clientResponseBody
     };
 
     return clientResponseBody;
@@ -47,6 +52,27 @@ async function fetchPulseDive(params) {
     return null;
   }
 }
+
+async function fetchThreatInfo(indicator) {
+  const apiKey = process.env.pulseApiKey;
+  const baseURL = "https://pulsedive.com/api/info.php";
+  const pretty = "1";
+  const queryString = `${baseURL}?threat=${indicator}&pretty=${pretty}&key=${apiKey}`;
+  const options = {
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+    },
+  };
+  const response = await fetch(queryString, options);
+  const responseBody = await response.json();
+
+  const wikisummary = responseBody.wikisummary;
+  console.log(`Wiki Summary: ${wikisummary}`);
+  return wikisummary;
+}
+
 module.exports = {
   fetchPulseDive,
+  fetchThreatInfo,
 };
