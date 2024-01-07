@@ -1,7 +1,7 @@
-async function fetchHostIo() {
+async function fetchHostIo(params) {
   const apiKey = process.env.hostioApiKey;
   const baseURL = "https://host.io/api/web/";
-  const domain = "mau.se";
+  const domain = params;
   const queryString = `${baseURL}${domain}?token=${apiKey}`;
   const options = {
     method: "GET",
@@ -11,8 +11,15 @@ async function fetchHostIo() {
   };
   const response = await fetch(queryString, options);
   const responseBody = await response.json();
-  console.log(responseBody);
-  return responseBody;
+  // console.log(responseBody);
+  const clientResponseBody = {
+    rank: responseBody.rank || "N/A",
+    facebook: responseBody.facebook || "N/A",
+    twitter: responseBody.twitter || "N/A",
+    instagram: responseBody.instagram || "N/A",
+    description: responseBody.description || "N/A",
+  };
+  return clientResponseBody;
 }
 
 module.exports = {

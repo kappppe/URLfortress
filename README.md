@@ -5,7 +5,7 @@ Nodejs
 Reactjs
 
 API's:
-AbuseIPdB,
+AbuseIPDB,
 IP-API,
 Host-io,
 PulseDive,

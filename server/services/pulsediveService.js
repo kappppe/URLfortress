@@ -1,7 +1,7 @@
-async function fetchPulseDive() {
+async function fetchPulseDive(params) {
   const apiKey = process.env.pulseApiKey;
   const baseURL = "https://pulsedive.com/api/info.php";
-  const indicator = "43.154.151.93";
+  const indicator = params;
   const pretty = "1";
   const queryString = `${baseURL}?indicator=${indicator}&pretty=${pretty}&key=${apiKey}`;
   const options = {
@@ -13,7 +13,15 @@ async function fetchPulseDive() {
   const response = await fetch(queryString, options);
   const responseBody = await response.json();
   console.log(responseBody);
-  return responseBody;
+  const clientResponseBody = {
+    risk: responseBody.risk || "N/A",
+    riskRecommended: responseBody.risk_recommended || "N/A",
+    riskFactors: responseBody.riskfactors || "N/A",
+    threats: responseBody.threats || "N/A",
+    port: responseBody.port || "N/A",
+    protocol: responseBody.protocol || "N/A",
+  };
+  return clientResponseBody;
 }
 
 module.exports = {
