@@ -18,10 +18,11 @@ const MapContainer = ({ center }) => {
     return <p>Loading map...</p>;
   }
 
+  const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
   return (
     <div style={{ height: "50vh", width: "40%" }}>
       <GoogleMapReact
-        bootstrapURLKeys={{ key: "" }}
+        bootstrapURLKeys={{ key: apiKey }}
         // defaultCenter={{ lat: center.lat, lng: center.long }}
         center={{ lat: center.lat, lng: center.long }}
         defaultZoom={defaultProps.zoom}
