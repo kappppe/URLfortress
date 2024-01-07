@@ -9,6 +9,13 @@ function Searchbar() {
     setQuery(event.target.value);
   };
 
+  // Added key press event listener for the 'Enter' key
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      fetchData();
+    }
+  };
+
   const baseURL = "http://localhost:3000/api/v1/fullreport/?query=";
   const queryString = `${baseURL}${query}`;
 
@@ -33,7 +40,10 @@ function Searchbar() {
   return (
     <>
       <label>Please, input the ip/domain address:</label>
-      <input onChange={handleChange}></input>
+      <input
+        onChange={handleChange}
+        onKeyPress={handleKeyPress} // Added event listener for key press
+      ></input>
       <button type="button" onClick={fetchData}>
         Search
       </button>
@@ -41,6 +51,7 @@ function Searchbar() {
       {Object.keys(responseData).length > 0 ? (
         <div>
           <h2>Host Io Result</h2>
+client-input
           <p>Rank: {responseData.hostIoResult?.rank}</p>
           <p>Facebook: {responseData.hostIoResult?.facebook}</p>
           <p>Twitter: {responseData.hostIoResult?.twitter}</p>
@@ -49,6 +60,7 @@ function Searchbar() {
           {responseData.abuseResult?.whiteList !== undefined && (
             <p>whitelisted: {String(responseData.abuseResult?.whiteList)}</p>
           )}
+
           {/* Conditionally render the map */}
           {responseData.ipApiResult ? (
             <SimpleMap center={responseData.ipApiResult} />
@@ -64,3 +76,4 @@ function Searchbar() {
 }
 
 export default Searchbar;
+

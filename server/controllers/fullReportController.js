@@ -4,11 +4,13 @@ const { fetchAbuse } = require("../services/abuseipdbService");
 const { checkToResolve } = require("./clientInputController");
 const { fetchIpCoordinates } = require("../services/ipApiService");
 
+
 async function fetchFullReport(req, res) {
   try {
     const params = req.param("query");
     const resolvedResult = await checkToResolve(params);
     const response = {};
+
 
     if (resolvedResult === false) {
       response.pulseDiveResult = await fetchPulseDive(params);

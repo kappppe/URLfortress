@@ -21,7 +21,7 @@ img {
 body {
   min-height: 100vh;
   background: #18181b;
-  color: white;
+  color: rgb(157, 255, 206);
 }
 a {
   color: white;
@@ -42,6 +42,7 @@ a {
 .items-center {
   align-items: center;
 }
+
 /* ----------------------------------------------------- */
 
 label {
@@ -65,3 +66,4 @@ button {
   padding: 8px;
   cursor: pointer;
 }
+

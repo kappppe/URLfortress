@@ -1,4 +1,5 @@
 const dns = require("dns");
+
 function inputIpCheck(input) {
   const ipAddress = /^(\d{1,3}\.){3}\d{1,3}$/;
   const domainAddress = /^(https?:\/\/)?(www\.)?[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -25,6 +26,7 @@ async function resolveDns(domain) {
 }
 
 async function checkToResolve(input) {
+
   try {
     const inputResults = inputIpCheck(input);
     if (inputResults === false) {

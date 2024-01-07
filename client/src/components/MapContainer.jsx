@@ -14,6 +14,7 @@ const MapContainer = ({ center }) => {
   };
 
   // Check if the center coordinates are defined before rendering the map
+
   // NEEDS FIXING, if coordinates == "N/A" --> error
   if (!center || !center.lat || !center.long) {
     return <p>Loading map...</p>;
@@ -21,6 +22,7 @@ const MapContainer = ({ center }) => {
   const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
   return (
     <div style={{ height: "50vh", width: "40%" }}>
+main
       <GoogleMapReact
         bootstrapURLKeys={{ key: apiKey }}
         // defaultCenter={{ lat: center.lat, lng: center.long }}
@@ -33,6 +35,7 @@ const MapContainer = ({ center }) => {
           lat={center.lat}
           lng={center.long}
           text="My Marker"
+
         />
       </GoogleMapReact>
     </div>
@@ -40,3 +43,4 @@ const MapContainer = ({ center }) => {
 };
 
 export default MapContainer;
+
