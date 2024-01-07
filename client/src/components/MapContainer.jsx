@@ -5,7 +5,7 @@ const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
 const MapContainer = ({ center }) => {
   const defaultProps = {
-    zoom: 11,
+    zoom: 9,
   };
 
   const handleApiLoaded = (map, maps) => {
