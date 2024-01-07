@@ -26,8 +26,10 @@ async function fetchAbuse(params) {
 
     const clientResponseBody = {
       ip: jsonBody.data.ipAddress ?? "N/A",
+      ipVersion: jsonBody.data.ipVersion ?? "N/A",
       score: jsonBody.data.abuseConfidenceScore ?? "N/A",
       usage: jsonBody.data.usageType ?? "N/A",
+      totalReports: jsonBody.data.totalReports ?? "N/A",
       isp: jsonBody.data.isp ?? "N/A",
       domain: jsonBody.data.domain ?? "N/A",
       whiteList: jsonBody.data.isWhitelisted ?? "N/A",

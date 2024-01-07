@@ -28,7 +28,6 @@ async function fetchPulseDive(params) {
     if (responseBody.threats && responseBody.threats.length > 0) {
 
       const threatName = responseBody.threats[0].name;  //get first threat (if any)
-      console.log('Threat Name:', threatName);
 
       wikiSummary = await fetchThreatInfo(threatName);
       console.log('Wiki Summary:', wikiSummary);
@@ -37,14 +36,22 @@ async function fetchPulseDive(params) {
     }
 
     console.log(responseBody);
+    const protocols = responseBody.attributes?.protocol || [];
+    const technology = responseBody.attributes?.technology || [];
+    const description = responseBody.riskfactors?.map((factor) => factor.description) || [];
 
     const clientResponseBody = {
+      
+      domain: responseBody.properties?.ssl?.domain ?? "N/A", 
+      address: responseBody.properties?.geo?.address ?? "N/A",
       risk: responseBody.risk ?? "N/A",
       riskRecommended: responseBody.risk_recommended ?? "N/A",
       riskFactors: responseBody.riskfactors ?? "N/A",
       threats: responseBody.threats ?? "N/A",
       port: responseBody.port ?? "N/A",
-      protocol: responseBody.protocol ?? "N/A",
+      protocols: protocols.join(', '), // Combine into a strings
+      technology: technology.join(', '), 
+      description: description.join(', '),
       wikisummary: wikiSummary,
     };
 
