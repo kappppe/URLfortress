@@ -4,30 +4,38 @@ const { fetchAbuse } = require("../services/abuseipdbService");
 const { checkToResolve } = require("./clientInputController");
 const { fetchIpCoordinates } = require("../services/ipApiService");
 
-async function fetchFullReport(req, res) {    
-  const params = req.param("query");
-  const resolvedResult = await checkToResolve(params);
-  console.log(resolvedResult);
 
-  let response = {};
+async function fetchFullReport(req, res) {
+  try {
+    const params = req.param("query");
+    const resolvedResult = await checkToResolve(params);
+    const response = {};
 
-  if (resolvedResult !== true) {
-    response.hostIoResult = await fetchHostIo(params);
-    response.pulseDiveResult = await fetchPulseDive(resolvedResult);
-    response.abuseResult = await fetchAbuse(resolvedResult);
-    response.ipApiResult = await fetchIpCoordinates(resolvedResult);
 
-    console.log(`Resolved result: ${resolvedResult}`);
-  } else if (resolvedResult !== false) {
-    const hostIoResult = await fetchHostIo(params);
+    if (resolvedResult === false) {
+      response.pulseDiveResult = await fetchPulseDive(params);
+      response.abuseResult = await fetchAbuse(params);
+      response.ipApiResult = await fetchIpCoordinates(params);
+    } else if (resolvedResult !== null) {
+      response.hostIoResult = await fetchHostIo(params);
+      response.pulseDiveResult = await fetchPulseDive(resolvedResult);
+      response.abuseResult = await fetchAbuse(resolvedResult);
+      response.ipApiResult = await fetchIpCoordinates(resolvedResult);
+    } else {
+      throw new Error(`invalid input`);
+    }
+
+    res.status(200).json(response);
+  } catch (error) {
+    // Needs fixing so that it responds with same error for invalid domain name
+    if (error && error.message && error.message.includes("invalid input")) {
+      res.status(400).json({ error: "Please enter a valid domain/ip" });
+    } else {
+      res.status(500).json({ error: "Internal server error" });
+    }
   }
-  console.log(response.abuseResult);
-  console.log(response.pulseDiveResult);
-  console.log(response.ipApiResult);
-  console.log(response.hostIoResult);
-
-  res.send(response);
 }
+
 module.exports = {
   fetchFullReport,
 };

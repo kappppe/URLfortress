@@ -51,10 +51,15 @@ function Searchbar() {
       {Object.keys(responseData).length > 0 ? (
         <div>
           <h2>Host Io Result</h2>
-          <p>Rank: {responseData.hostIoResult.rank}</p>
-          <p>Facebook: {responseData.hostIoResult.facebook}</p>
-          <p>Twitter: {responseData.hostIoResult.twitter}</p>
-          <p>score: {responseData.abuseResult.score}</p>
+client-input
+          <p>Rank: {responseData.hostIoResult?.rank}</p>
+          <p>Facebook: {responseData.hostIoResult?.facebook}</p>
+          <p>Twitter: {responseData.hostIoResult?.twitter}</p>
+          <p>score: {responseData.abuseResult?.score}</p>
+          <p>risk: {responseData.pulseDiveResult?.risk}</p>
+          {responseData.abuseResult?.whiteList !== undefined && (
+            <p>whitelisted: {String(responseData.abuseResult?.whiteList)}</p>
+          )}
 
           {/* Conditionally render the map */}
           {responseData.ipApiResult ? (
