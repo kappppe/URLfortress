@@ -13,21 +13,17 @@ function inputIpCheck(input) {
 }
 
 async function resolveDns(domain) {
-  try {
-    return new Promise((resolve, reject) => {
-      dns.resolve(domain, (error, addresses) => {
-        if (error) {
-          reject(`An error occurred: ${error.message}`);
-        } else {
-          resolve(addresses[0]);
-        }
-      });
+  return new Promise((resolve, reject) => {
+    dns.resolve(domain, (error, addresses) => {
+      if (error) {
+        reject(`DNS resolution failed for ${domain}: ${error.message}`);
+      } else {
+        resolve(addresses[0]);
+      }
     });
-  } catch (error) {
-    console.error(`Error in resolveDns: ${error.message}`);
-    throw error;
-  }
+  });
 }
+
 async function checkToResolve(input) {
   try {
     const inputResults = inputIpCheck(input);
