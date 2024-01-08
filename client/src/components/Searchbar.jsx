@@ -60,10 +60,10 @@ function Searchbar() {
           <p>Facebook: {responseData.hostIoResult?.facebook}</p>
           <p>Twitter: {responseData.hostIoResult?.twitter}</p>
           <p>score: {responseData.abuseResult?.score}</p> */}
-          <p>ip: {responseData.abuseResult.ip}</p>
-          <p>ip version: {responseData.abuseResult.ipVersion}</p>
-          <p>usage: {responseData.abuseResult.usage}</p>
-          <p>total reports: {responseData.abuseResult.totalReports}</p>
+          <p>ip: {responseData.abuseResult?.ip}</p>
+          <p>ip version: {responseData.abuseResult?.ipVersion}</p>
+          <p>usage: {responseData.abuseResult?.usage}</p>
+          <p>total reports: {responseData.abuseResult?.totalReports}</p>
           <p>risk: {responseData.pulseDiveResult?.risk}</p>
           {responseData.abuseResult?.whiteList !== undefined && (
             <p>whitelisted: {String(responseData.abuseResult?.whiteList)}</p>
@@ -81,20 +81,20 @@ function Searchbar() {
           <h3>Location information</h3>
           <p>
             country:{" "}
-            {responseData.ipApiResult.country +
+            {responseData.ipApiResult?.country +
               " " +
               "(" +
-              responseData.ipApiResult.countryCode +
+              responseData.ipApiResult?.countryCode +
               ")"}{" "}
           </p>
-          <p>city: {responseData.ipApiResult.city}</p>
-          <p>zip: {responseData.ipApiResult.zip}</p>
+          <p>city: {responseData.ipApiResult?.city}</p>
+          <p>zip: {responseData.ipApiResult?.zip}</p>
           <p>address: {responseData.pulseDiveResult?.address}</p>
           <br />
 
           {/* Conditionally render the map */}
           {responseData.ipApiResult ? (
-            <SimpleMap center={responseData.ipApiResult} />
+            <SimpleMap center={responseData?.ipApiResult} />
           ) : (
             <p>Loading map...</p>
           )}
