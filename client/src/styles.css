@@ -54,15 +54,30 @@ input {
   width: 200px;
   padding: 8px;
   margin-bottom: 16px;
-  color: rgb(219, 224, 222);
-  background-color: gray;
+  color: black;
+  border: solid 2px lightgray;
+  background-color: white;
   outline: none;
-  border: none;
-  margin-inline: 15px;
-  border-radius: 5px;
+  border-right: none;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+input::placeholder{
+  color: rgb(167, 167, 167);
 }
 
 button {
+  background-color: gray;
   padding: 8px;
   cursor: pointer;
+  border-left: none;
+  /*border: solid 2px lightgray;*/
+  border: solid 2px lightgray;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+button i{
+  color: white;
 }

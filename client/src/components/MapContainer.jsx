@@ -17,7 +17,7 @@ const MapContainer = ({ center }) => {
 
   // NEEDS FIXING, if coordinates == "N/A" --> error
   if (!center || !center.lat || !center.long) {
-    return <p>Loading map...</p>;
+    return <p></p>;
   }
   const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
   return (

@@ -38,13 +38,13 @@ function Searchbar() {
 
   return (
     <>
-      <label>Please, input the ip/domain address:</label>
       <input
         onChange={handleChange}
         onKeyPress={handleKeyPress} // Added event listener for key press
+      placeholder="Enter IP/Domain Address"
       ></input>
       <button type="button" onClick={fetchData}>
-        Search
+        <i class="fa-solid fa-magnifying-glass"></i>
       </button>
 
       {Object.keys(responseData).length > 0 ? (
@@ -63,7 +63,7 @@ function Searchbar() {
           {responseData.ipApiResult ? (
             <SimpleMap center={responseData.ipApiResult} />
           ) : (
-            <p>Loading map...</p>
+            <p></p>
           )}
         </div>
       ) : (
