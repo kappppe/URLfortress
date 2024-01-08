@@ -38,13 +38,13 @@ function Searchbar() {
 
   return (
     <>
-      <label>search on ip or domain</label>
       <input
         onChange={handleChange}
         onKeyPress={handleKeyPress} // Added event listener for key press
+        placeholder="Enter IP / Domain"
       ></input>
       <button type="button" onClick={fetchData}>
-        Search
+      <i class="fa-solid fa-magnifying-glass"></i>
       </button>
 
       {Object.keys(responseData).length > 0 ? (
@@ -73,12 +73,13 @@ function Searchbar() {
           <p>Wiki summary on { responseData.pulseDiveResult.threat + ": " + responseData.pulseDiveResult.wikisummary+""}</p>  
           <br />
         
-
-          <h3>Location information</h3>
-          <p>country: { responseData.ipApiResult.country + " " + "(" + responseData.ipApiResult.countryCode + ")"} </p>
-          <p>city: { responseData.ipApiResult.city}</p>
-          <p>zip: { responseData.ipApiResult.zip}</p>
-          <p>address: { responseData.pulseDiveResult.address}</p>
+          <div className="location-section">
+          <h4>Location information</h4>
+          <p>Country: { responseData.ipApiResult.country + " " + "(" + responseData.ipApiResult.countryCode + ")"} </p>
+          <p>City:     { responseData.ipApiResult.city}</p>
+          <p>Zip: { responseData.ipApiResult.zip}</p>
+          <p>Address: { responseData.pulseDiveResult.address}</p>
+          </div>
           <br />
 
           {/* Conditionally render the map */}

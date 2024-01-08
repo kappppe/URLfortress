@@ -5,7 +5,7 @@ const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
 const MapContainer = ({ center }) => {
   const defaultProps = {
-    zoom: 9,
+    zoom: 10,
   };
 
   const handleApiLoaded = (map, maps) => {
@@ -17,11 +17,19 @@ const MapContainer = ({ center }) => {
 
   // NEEDS FIXING, if coordinates == "N/A" --> error
   if (!center || !center.lat || !center.long) {
-    return <p>Loading map...</p>;
+    return <p></p>;
   }
   const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
   return (
-    <div style={{ height: "50vh", width: "40%" }}>
+    <div style={{
+      height: "42vh",
+      width: "28%",
+      position: "fixed",
+      border: "8px solid currentColor",
+      borderRadius: "8px",
+      top: "40vh",
+      right: "18vh"
+      }}>
       <GoogleMapReact
         bootstrapURLKeys={{ key: apiKey }}
         // defaultCenter={{ lat: center.lat, lng: center.long }}
@@ -33,7 +41,7 @@ const MapContainer = ({ center }) => {
         <AnyReactComponent
           lat={center.lat}
           lng={center.long}
-          text="My Marker"
+          text=""
         />
       </GoogleMapReact>
     </div>

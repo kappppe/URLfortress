@@ -21,7 +21,8 @@ img {
 body {
   min-height: 100vh;
   background: #18181b;
-  color: rgb(237, 237, 237);
+  color: rgb(141, 255, 213);
+  font-family: Arial, Helvetica, sans-serif;
 }
 a {
   color: white;
@@ -54,15 +55,46 @@ input {
   width: 200px;
   padding: 8px;
   margin-bottom: 16px;
-  color: rgb(219, 224, 222);
-  background-color: gray;
+  color: black;
+  border: solid 2px lightgray;
+  background-color: white;
   outline: none;
-  border: none;
-  margin-inline: 15px;
-  border-radius: 5px;
+  border-right: none;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+input::placeholder{
+  color: rgb(167, 167, 167);
 }
 
 button {
+  background-color: gray;
   padding: 8px;
   cursor: pointer;
+  border-left: none;
+  border: solid 2px lightgray;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+button i{
+  color: white;
+}
+
+.location-section {
+  float: right;
+  margin-right: 20vw;
+  margin-top: -10vw;
+  padding: 10px;
+  border-radius: 8px;
+  /*box-shadow: 0 4px 6px rgba(6, 86, 185, 0.452);*/
+}
+
+.map-section {
+  float: right;
+  margin-right: 20vw;
+  margin-bottom: 40vw;
+  padding: 10px;
+  border-radius: 8px;
 }
