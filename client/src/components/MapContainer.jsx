@@ -1,5 +1,4 @@
 // Check if the center coordinates are defined before rendering the map
-import React from "react";
 import GoogleMapReact from "google-map-react";
 
 const MapPin = () => (
