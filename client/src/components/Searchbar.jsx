@@ -38,38 +38,59 @@ function Searchbar() {
 
   return (
     <>
+      <label>search on ip or domain</label>
       <input
         onChange={handleChange}
         onKeyPress={handleKeyPress} // Added event listener for key press
-      placeholder="Enter IP/Domain Address"
       ></input>
       <button type="button" onClick={fetchData}>
-        <i className="fa-solid fa-magnifying-glass"></i>
+        Search
       </button>
 
-        {Object.keys(responseData).length > 0 ? (
-          <div>
-            <h2>Host Io Result</h2>
-            <p>Rank: {responseData.hostIoResult?.rank}</p>
-            <p>Facebook: {responseData.hostIoResult?.facebook}</p>
-            <p>Twitter: {responseData.hostIoResult?.twitter}</p>
-            <p>score: {responseData.abuseResult?.score}</p>
-            <p>risk: {responseData.pulseDiveResult?.risk}</p>
-            {responseData.abuseResult?.whiteList !== undefined && (
-              <p>whitelisted: {String(responseData.abuseResult?.whiteList)}</p>
-            )}
-            {/* Conditionally render the map */}
-            {responseData.ipApiResult ? (
-              <SimpleMap center={responseData.ipApiResult} />
-            ) : (
-              <p>Loading map...</p>
-            )}
-          </div>
-        ) : (
-          <p>No data available. Please perform a search.</p>
-        )}
-      </section>
+      {Object.keys(responseData).length > 0 ? (
+        <div>
+          <h3>General information</h3>
+          <p>domain: {responseData.pulseDiveResult.domain} </p>
+          <p>protocols: {responseData.pulseDiveResult.protocols} </p>
+          <p>technologies: {responseData.pulseDiveResult.technologies} </p>
+          <br />
 
+
+          <h3>Security information</h3>
+          {/* <p>Rank: {responseData.hostIoResult?.rank}</p>
+          <p>Facebook: {responseData.hostIoResult?.facebook}</p>
+          <p>Twitter: {responseData.hostIoResult?.twitter}</p>
+          <p>score: {responseData.abuseResult?.score}</p> */}
+          <p>ip: {responseData.abuseResult.ip}</p>
+          <p>ip version: {responseData.abuseResult.ipVersion}</p>
+          <p>usage: {responseData.abuseResult.usage}</p>
+          <p>total reports: {responseData.abuseResult.totalReports}</p>
+          <p>risk: {responseData.pulseDiveResult?.risk}</p>
+          {responseData.abuseResult?.whiteList !== undefined && (
+            <p>whitelisted: {String(responseData.abuseResult?.whiteList)}</p>
+          )}
+          <p>threat occured: {responseData.pulseDiveResult.threat}</p>
+          <p>Wiki summary on { responseData.pulseDiveResult.threat + ": " + responseData.pulseDiveResult.wikisummary+""}</p>  
+          <br />
+        
+
+          <h3>Location information</h3>
+          <p>country: { responseData.ipApiResult.country + " " + "(" + responseData.ipApiResult.countryCode + ")"} </p>
+          <p>city: { responseData.ipApiResult.city}</p>
+          <p>zip: { responseData.ipApiResult.zip}</p>
+          <p>address: { responseData.pulseDiveResult.address}</p>
+          <br />
+
+          {/* Conditionally render the map */}
+          {responseData.ipApiResult ? (
+            <SimpleMap center={responseData.ipApiResult} />
+          ) : (
+            <p>Loading map...</p>
+          )}
+        </div>
+      ) : (
+        <p>No data available. Please perform a search.</p>
+      )}
     </>
   );
 }

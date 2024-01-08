@@ -9,7 +9,7 @@ const MapPin = () => (
 
 const MapContainer = ({ center }) => {
   const defaultProps = {
-    zoom: 11,
+    zoom: 9,
   };
 
   const apiKey = import.meta.env.VITE_GOOGLE_MAPS_API_KEY;
