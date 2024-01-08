@@ -1,97 +1,81 @@
 FORMAT: 1A
-HOST: https://http://localhost:3000/api/v1
+HOST: https://localhost:5174/api/v1
 
 # urlFortress
-This API is used to fetch business and security based information about websites.
 
+This API is used to fetch business and security-based information about websites.
 
-## Get full report [/fullreport/?query={param}]
+## Get full report [/fullreport/query={?param}]
 
 ### Get Domain Information [GET]
-Retrieve detailed information about a domain.
 
 + Request
 
     + Headers
-    
-            Content-Type: application/json
+        
+            url: https://localhost:3000
+            Accept: application/json
 
 
     + Parameters
         + param (string) - The domain name/IP Address for which information is requested.
-
-
+        
 
 + Response 200 (application/json)
 
-        [
-            {
-                "hostIoResult": {
-                    "rank": 65,
-                    "facebook": "N/A",
-                    "twitter": "N/A",
-                    "instagram": "N/A",
-                    "description": "Reddit is a network of communities where people can dive into their interests, hobbies and passions. There's a community for whatever you're interested in on Reddit."
-                },
-                "pulseDiveResult": {
-                    "domain": "reddit.com",
-                    "address": "PO Box 78266",
-                    "risk": "none",
-                    "riskRecommended": "none",
-                    "riskFactors": [
-                        {
-                            "rfid": 62,
-                            "description": "linked to top 100k domain",
-                            "risk": "none"
-                        },
-                        {
-                            "rfid": 61,
-                            "description": "linked to top 10k domain",
-                            "risk": "none"
-                        },
-                        {
-                            "rfid": 63,
-                            "description": "linked to top 1k domain",
-                            "risk": "none"
-                        }
-                    ],
-                    "threat": "Phishing",
-                    "port": "N/A",
-                    "protocols": "HTTP, HTTPS",
-                    "technologies": "",
-                    "description": "linked to top 100k domain, linked to top 10k domain, linked to top 1k domain",
-                    "wikisummary": "Phishing is a form of social engineering and scam where attackers deceive people into revealing sensitive information or installing malware such as ransomware. Phishing attacks have become increasingly sophisticated and often transparently mirror the site being targeted, allowing the attacker to observe everything while the victim is navigating the site, and transverse any additional security boundaries with the victim. As of 2020, it is the most common type of cybercrime, with the FBI's Internet Crime Complaint Center reporting more incidents of phishing than any other type of computer crime.The term \"phishing\" was first recorded in 1995 in the cracking toolkit AOHell, but may have been used earlier in the hacker magazine 2600. It is a variation of fishing and refers to the use of lures to \"fish\" for sensitive information.Measures to prevent or reduce the impact of phishing attacks include legislation, user education, public awareness, and technical security measures. The importance of phishing awareness has increased in both personal and professional settings, with phishing attacks among businesses rising from 72% to 86% from 2017 to 2020.\n\n"
-                },
-                "abuseResult": {
-                    "ip": "151.101.193.140",
-                    "ipVersion": 4,
-                    "score": 0,
-                    "usage": "Content Delivery Network",
-                    "totalReports": 9,
-                    "isp": "Fastly Inc.",
-                    "domain": "fastly.com",
-                    "whiteList": true
-                },
-                "ipApiResult": {
-                    "country": "Canada",
-                    "countryCode": "CA",
-                    "city": "Toronto",
-                    "zip": "M5A",
-                    "lat": 43.6532,
-                    "long": -79.3832
-                }
-            }
-        
-        ]
-    
+    + Attributes
+
+        + hostIoResult (object)
+            + `rank`: 65 (number) - The rank of the host
+            + `facebook`: N/A (string) - The Facebook information of the host
+            - `twitter`: N/A (string, required) - The Twitter information of the host
+            - `instagram`: N/A (string, required) - The Instagram information of the host
+            - `description`: "Reddit is a network of communities where people can dive into their interests, hobbies and passions. There's a community for whatever you're interested in on Reddit.  (string, required) - A description of the host
+
+        - pulseDiveResult (object)
+            - `domain`: reddit.com (string, required) - The domain of the pulse dive result
+            - `address`: PO Box 78266 (string, required) - The address of the pulse dive result
+            - `risk`: none (string, required) - The risk level of the pulse dive result
+            - `riskRecommended`: none (string, required) - The recommended risk level for the pulse dive result
+            - `riskFactors`  (array, required)
+                    - `rfid`: 62 (number, required) - The risk factor ID
+                    - `description`: linked to top 100k domain (string, required) - The description of the risk factor
+                    - `risk`: none (string, required) - The risk level associated with the risk factor
+            - `threat`: Phishing (string, required) - The type of threat
+            - `port`: N/A (string, required) - The port information
+            - `protocols`: HTTP, HTTPS (string, required) - The supported protocols
+            - `technologies` (string, required) - The technologies used
+            - `description`: linked to top 100k domain, linked to top 10k domain, linked to top 1k domain (string, required) - A description of the pulse dive result
+            - `wikisummary`: Phishing is a form of social engineering and scam where attackers deceive people into revealing sensitive information or installing malware such as ransomware. Phishing attacks have become increasingly sophisticated and often transparently mirror the site being targeted, allowing the attacker to observe everything while the victim is navigating the site, and transverse any additional security boundaries with the victim. As of 2020, it is the most common type of cybercrime, with the FBI's Internet Crime Complaint Center reporting more incidents of phishing than any other type of computer crime.The term \"phishing\" was first recorded in 1995 in the cracking toolkit AOHell, but may have been used earlier in the hacker magazine 2600. It is a variation of fishing and refers to the use of lures to \"fish\" for sensitive information.Measures to prevent or reduce the impact of phishing attacks include legislation, user education, public awareness, and technical security measures. The importance of phishing awareness has increased in both personal and professional settings, with phishing attacks among businesses rising from 72% to 86% from 2017 to 2020.\n\n (string, required) - A summary from the wiki
+
+        - abuseResult (object)
+            - `ip` 151.101.193.140 (string, required) - The IP address
+            - `ipVersion` 4 (number, required) - The IP version
+            - `score` 0 (number, required) - The abuse score
+            - `usage` Content Delivery Network(string, required) - The usage information
+            - `totalReports` 9 (number, required) - The total number of reports
+            - `isp`: Fastly Inc(string, required) - The Internet Service Provider
+            - `domain`: fastly.com (string, required) - The domain information
+            - `whiteList`: true (boolean, required) - Whether the IP is on the whitelist
+
+        - ipApiResult (object)
+            - `country`: Canada (string, required) - The country of the IP
+            - `countryCode`: CA (string, required) - The country code of the IP
+            - `city`: Toronto (string, required) - The city of the IP
+            - `zip`: M5A (string, required) - The ZIP code of the IP
+            - `lat`: 43.6532 (number, required) - The latitude of the IP
+            - `long`: 79.3832 (number, required) - The longitude of the IP
+            
+
+
 + Response 404 (text/plain)
-    
+
         [
             {
-                404 Resource Not Found
+              404 Resource Not Found
             }
-        ]
-    
+         ]
+
 + Response 400 (text/plain)
 
         [
@@ -99,11 +83,11 @@ Retrieve detailed information about a domain.
                 400 Please enter a valid domain/ip
             }
         ]
-    
+
 + Response 500 (text/plain)
 
         [
             {
-                500 Internal server error 
+                500 Internal server error
             }
         ]
