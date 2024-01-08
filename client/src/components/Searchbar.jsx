@@ -44,7 +44,7 @@ function Searchbar() {
       placeholder="Enter IP/Domain Address"
       ></input>
       <button type="button" onClick={fetchData}>
-        <i class="fa-solid fa-magnifying-glass"></i>
+        <i className="fa-solid fa-magnifying-glass"></i>
       </button>
 
       {Object.keys(responseData).length > 0 ? (
