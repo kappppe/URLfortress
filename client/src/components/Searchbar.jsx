@@ -50,11 +50,10 @@ function Searchbar() {
       {Object.keys(responseData).length > 0 ? (
         <div>
           <h3>General information</h3>
-          <p>domain: {responseData.pulseDiveResult.domain} </p>
-          <p>protocols: {responseData.pulseDiveResult.protocols} </p>
-          <p>technologies: {responseData.pulseDiveResult.technologies} </p>
+          <p>domain: {responseData.pulseDiveResult?.domain} </p>
+          <p>protocols: {responseData.pulseDiveResult?.protocols} </p>
+          <p>technologies: {responseData.pulseDiveResult?.technologies} </p>
           <br />
-
 
           <h3>Security information</h3>
           {/* <p>Rank: {responseData.hostIoResult?.rank}</p>
@@ -69,16 +68,28 @@ function Searchbar() {
           {responseData.abuseResult?.whiteList !== undefined && (
             <p>whitelisted: {String(responseData.abuseResult?.whiteList)}</p>
           )}
-          <p>threat occured: {responseData.pulseDiveResult.threat}</p>
-          <p>Wiki summary on { responseData.pulseDiveResult.threat + ": " + responseData.pulseDiveResult.wikisummary+""}</p>  
+          <p>threat occured: {responseData.pulseDiveResult?.threat}</p>
+          <p>
+            Wiki summary on{" "}
+            {responseData.pulseDiveResult?.threat +
+              ": " +
+              responseData.pulseDiveResult?.wikisummary +
+              ""}
+          </p>
           <br />
-        
 
           <h3>Location information</h3>
-          <p>country: { responseData.ipApiResult.country + " " + "(" + responseData.ipApiResult.countryCode + ")"} </p>
-          <p>city: { responseData.ipApiResult.city}</p>
-          <p>zip: { responseData.ipApiResult.zip}</p>
-          <p>address: { responseData.pulseDiveResult.address}</p>
+          <p>
+            country:{" "}
+            {responseData.ipApiResult.country +
+              " " +
+              "(" +
+              responseData.ipApiResult.countryCode +
+              ")"}{" "}
+          </p>
+          <p>city: {responseData.ipApiResult.city}</p>
+          <p>zip: {responseData.ipApiResult.zip}</p>
+          <p>address: {responseData.pulseDiveResult?.address}</p>
           <br />
 
           {/* Conditionally render the map */}

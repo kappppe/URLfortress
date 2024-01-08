@@ -17,7 +17,6 @@ async function fetchPulseDive(params) {
       console.error(
         `Failed to fetch pulsedive information. Status: ${response.status}`
       );
-      return null;
     }
 
     const responseBody = await response.json();
@@ -26,32 +25,32 @@ async function fetchPulseDive(params) {
 
     let wikiSummary = "N/A";
     if (responseBody.threats && responseBody.threats.length > 0) {
+      const threatName = responseBody.threats[0].name; //get first threat (if any)
 
-      const threatName = responseBody.threats[0].name;  //get first threat (if any)
-      
       wikiSummary = await fetchThreatInfo(threatName);
-      console.log('Wiki Summary:', wikiSummary);
+      console.log("Wiki Summary:", wikiSummary);
     } else {
-      console.log('No threats found in the response.');
+      console.log("No threats found in the response.");
     }
 
     console.log(responseBody);
     const protocols = responseBody.attributes?.protocol || [];
     const technology = responseBody.attributes?.technology || [];
-    const description = responseBody.riskfactors?.map((factor) => factor.description) || [];
+    const description =
+      responseBody.riskfactors?.map((factor) => factor.description) || [];
 
     const clientResponseBody = {
-      domain: responseBody.properties?.ssl?.domain ?? "N/A", 
+      domain: responseBody.properties?.ssl?.domain ?? "N/A",
       address: responseBody.properties?.geo?.address ?? "N/A",
       risk: responseBody.risk ?? "N/A",
       riskRecommended: responseBody.risk_recommended ?? "N/A",
       riskFactors: responseBody.riskfactors ?? "N/A",
       threat: responseBody.threats[0].name ?? "N/A",
       port: responseBody.port ?? "N/A",
-      protocols: protocols.join(', '), // Combine into a strings
-      technologies: technology.join(', '), 
-      description: description.join(', '),
-      wikisummary: wikiSummary,
+      protocols: protocols.join(", "), // Combine into a strings
+      technologies: technology.join(", ") ?? "N/A",
+      description: description.join(", ") ?? "N/A",
+      wikisummary: wikiSummary ?? "N/A",
     };
 
     return clientResponseBody;
@@ -63,7 +62,7 @@ async function fetchPulseDive(params) {
 
 async function fetchThreatInfo(indicator) {
   if (!indicator) {
-    console.log('No threat indicator provided.');
+    console.log("No threat indicator provided.");
     return "N/A";
   }
 
@@ -94,4 +93,3 @@ module.exports = {
   fetchPulseDive,
   fetchThreatInfo,
 };
-
