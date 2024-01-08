@@ -46,15 +46,30 @@ input {
   margin-bottom: 16px;
   color: rgb(255, 255, 255);
   background-color: rgb(67, 67, 67);
+
   outline: none;
-  border: none;
-  margin-inline: 15px;
-  border-radius: 5px;
+  border-right: none;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+input::placeholder{
+  color: rgb(167, 167, 167);
 }
 
 button {
+  background-color: gray;
   padding: 8px;
   cursor: pointer;
+  border-left: none;
+  /*border: solid 2px lightgray;*/
+  border: solid 2px lightgray;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+button i{
+  color: white;
 }
 
 /* ---------Google maps pin------------- */

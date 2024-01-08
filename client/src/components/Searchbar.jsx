@@ -59,7 +59,6 @@ function Searchbar() {
             {responseData.abuseResult?.whiteList !== undefined && (
               <p>whitelisted: {String(responseData.abuseResult?.whiteList)}</p>
             )}
-
             {/* Conditionally render the map */}
             {responseData.ipApiResult ? (
               <SimpleMap center={responseData.ipApiResult} />
@@ -71,6 +70,7 @@ function Searchbar() {
           <p>No data available. Please perform a search.</p>
         )}
       </section>
+
     </>
   );
 }
