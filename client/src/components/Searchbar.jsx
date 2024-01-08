@@ -38,15 +38,14 @@ function Searchbar() {
 
   return (
     <>
-      <section className="container">
-        <input
-          onChange={handleChange}
-          onKeyPress={handleKeyPress}
-          placeholder="Enter URL/IP-address here..."
-        ></input>
-        <button type="button" onClick={fetchData}>
-          Search
-        </button>
+      <input
+        onChange={handleChange}
+        onKeyPress={handleKeyPress} // Added event listener for key press
+      placeholder="Enter IP/Domain Address"
+      ></input>
+      <button type="button" onClick={fetchData}>
+        <i className="fa-solid fa-magnifying-glass"></i>
+      </button>
 
         {Object.keys(responseData).length > 0 ? (
           <div>
