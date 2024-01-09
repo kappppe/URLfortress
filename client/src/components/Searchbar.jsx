@@ -6,11 +6,12 @@ function Searchbar() {
   const [responseData, setResponseData] = useState({});
 
   const handleChange = (event) => {
-    setQuery(event.target.value);
+    const inputValue = event.target.value.trim();       //check for empty chars.
+    setQuery(inputValue);
   };
-
+  
   const handleKeyPress = (event) => {
-    if (event.key === "Enter") {
+    if (event.key === "Enter" && query.trim() !== "") {     //check for empty chars.
       fetchData();
     }
   };
