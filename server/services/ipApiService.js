@@ -16,9 +16,12 @@ async function fetchIpCoordinates(domain) {
       );
     }
     responseBody = await response.json();
+
     const clientResponseBody = {
       country: responseBody.country ?? "N/A",
+      countryCode: responseBody.countryCode ?? "N/A",
       city: responseBody.city ?? "N/A",
+      zip: responseBody.zip ?? "N/A",
       lat: responseBody.lat ?? "N/A",
       long: responseBody.lon ?? "N/A",
     };
