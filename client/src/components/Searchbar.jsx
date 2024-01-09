@@ -4,6 +4,7 @@ import SimpleMap from "./MapContainer";
 function Searchbar() {
   const [query, setQuery] = useState("");
   const [responseData, setResponseData] = useState({});
+  const [error, setError] = useState(null);
 
   const handleChange = (event) => {
     const inputValue = event.target.value.trim();       //check and trim whitespace.
@@ -30,14 +31,15 @@ function Searchbar() {
 
       //Nothing to catch, therefor -> log status and return. (fix for bad request)
       const results = await fetch(queryString, options);
-      if (results.status != 200) {
-        console.error("Status code", results.status);
-        return;
-      }
-      const jsonBody = await results.json();
-      setResponseData(jsonBody);
-      
 
+      if (results.status !== 200) {
+        console.error("Status code", results.status);
+        setError(`Error: ${results.status}`);
+      } else {
+        const jsonBody = await results.json();
+        setResponseData(jsonBody);
+        setError(null);       //resets error to enable new search.
+      }
   };
 
   return (
@@ -52,7 +54,11 @@ function Searchbar() {
           Search
         </button>
 
-        {Object.keys(responseData).length > 0 ? (
+        {error ? (
+          <div>
+            <p>{error}</p>
+          </div>
+        ) : Object.keys(responseData).length > 0 ? (
 
           <div>
             <h3>General information</h3>
