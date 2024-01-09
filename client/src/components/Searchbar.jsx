@@ -55,6 +55,7 @@ function Searchbar() {
             <p>domain: {responseData.pulseDiveResult.domain} </p>
             <p>protocols: {responseData.pulseDiveResult.protocols} </p>
             <p>technologies: {responseData.pulseDiveResult.technologies} </p>
+            <p>description: {responseData.pulseDiveResult.description}</p>
             <br />
             
             <h3>Security information</h3>
@@ -81,17 +82,6 @@ function Searchbar() {
             <p>address: { responseData.pulseDiveResult.address}</p>
             <br /> 
 
-
-
-            {/* <h2>Host Io Result</h2>
-            <p>Rank: {responseData.hostIoResult?.rank}</p>
-            <p>Facebook: {responseData.hostIoResult?.facebook}</p>
-            <p>Twitter: {responseData.hostIoResult?.twitter}</p>
-            <p>score: {responseData.abuseResult?.score}</p>
-            <p>risk: {responseData.pulseDiveResult?.risk}</p> */}
-            {/* {responseData.abuseResult?.whiteList !== undefined && (
-              <p>whitelisted: {String(responseData.abuseResult?.whiteList)}</p>
-            )} */}
             {/* Conditionally render the map */}
             {responseData.ipApiResult ? (
               <SimpleMap center={responseData.ipApiResult} />

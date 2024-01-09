@@ -20,12 +20,15 @@ async function fetchPulseDive(params) {
       );
     }
 
+    console.log(response);
+
     const responseBody = await response.json();
 
     let wikiSummary = "N/A";
+    let threatName = "N/A"
     
     if (response.ok && (responseBody.threats && responseBody.threats.length > 0)) {
-      const threatName = responseBody.threats[0].name;  //get first threat (if any)
+      threatName = responseBody.threats[0].name;  //get first threat (if any)
       
       wikiSummary = await fetchThreatInfo(threatName);
       console.log('Wiki Summary:', wikiSummary);
@@ -43,7 +46,7 @@ async function fetchPulseDive(params) {
       risk: responseBody.risk ?? "N/A",
       riskRecommended: responseBody.risk_recommended ?? "N/A",
       riskFactors: responseBody.riskfactors ?? "N/A",
-      threat: responseBody.threats[0]?.name ?? "N/A", // Added optional chaining here too
+      threat: threatName ?? "N/A", // Added optional chaining here too
       port: responseBody.port ?? "N/A",
       protocols: protocols,
       technologies: technology,
