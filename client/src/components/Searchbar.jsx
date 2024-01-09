@@ -31,18 +31,11 @@ function Searchbar() {
       const results = await fetch(queryString, options);
       const jsonBody = await results.json();
       setResponseData(jsonBody);
+      
     console.log("pre-error");
     } catch (error) {
       console.log("error");
-      //console.log("Tja")
-      //console.error("Error fetching data:", error);
-      if (error instanceof ServerError) {
-        console.log("FAN");
-        return;
-      }
-  
-      throw error;
-
+      console.error("Error fetching data:", error);
     }
   };
 
