@@ -20,23 +20,23 @@ function Searchbar() {
   const queryString = `${baseURL}${query}`;
 
   const fetchData = async () => {
-    try {
+
       const options = {
         method: "GET",
         headers: {
           Accept: "application/json",
         },
       };
-
+      //Inget som kan fångas
       const results = await fetch(queryString, options);
+      if (results.status != 200) {
+        console.error("Status code", results.status);
+        return;
+      }
       const jsonBody = await results.json();
       setResponseData(jsonBody);
       
-    console.log("pre-error");
-    } catch (error) {
-      console.log("error");
-      console.error("Error fetching data:", error);
-    }
+
   };
 
   return (
