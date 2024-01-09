@@ -77,7 +77,7 @@ function Searchbar() {
             <p>Wiki summary on { responseData.pulseDiveResult.threat + ": " + responseData.pulseDiveResult.wikisummary+""}</p>  
             <br />
 
-            <h3>Location information</h3>
+            <h3>Server location</h3>
             <p>country: { responseData.ipApiResult.country + " " + "(" + responseData.ipApiResult.countryCode + ")"} </p>
             <p>city: { responseData.ipApiResult.city}</p>
             <p>zip: { responseData.ipApiResult.zip}</p>

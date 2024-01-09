@@ -19,7 +19,6 @@ async function fetchThreatInfo(indicator) {
     const responseBody = await response.json();
     
     const wikisummary = responseBody.wikisummary;
-    console.log(`Wiki Summary: ${wikisummary}`);
     return wikisummary;
   } catch (error) {
     console.error("Error in pulsedive service:", error);
