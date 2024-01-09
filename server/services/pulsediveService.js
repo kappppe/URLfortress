@@ -33,15 +33,25 @@ async function fetchPulseDive(params) {
       console.log('No threats found in the response.');
     }
 
+    const protocols = responseBody.attributes?.protocol ?? "N/A";
+    const technology = responseBody.attributes?.technology ?? "N/A";
+    const description = responseBody.riskfactors?.map((factor) => factor.description).join(', ') ?? "N/A";
+
     const clientResponseBody = {
+      domain: responseBody.properties?.ssl?.domain ?? "N/A", 
+      address: responseBody.properties?.geo?.address ?? "N/A",
       risk: responseBody.risk ?? "N/A",
       riskRecommended: responseBody.risk_recommended ?? "N/A",
       riskFactors: responseBody.riskfactors ?? "N/A",
-      threats: responseBody.threats ?? "N/A",
+      threat: responseBody.threats[0]?.name ?? "N/A", // Added optional chaining here too
       port: responseBody.port ?? "N/A",
-      protocol: responseBody.protocol ?? "N/A",
-      wikikummary: wikiSummary
+      protocols: protocols,
+      technologies: technology,
+      description: description,
+      wikisummary: wikiSummary,
     };
+
+    console.log(clientResponseBody);
 
     return clientResponseBody;
   } catch (error) {
