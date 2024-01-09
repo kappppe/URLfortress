@@ -27,7 +27,8 @@ function Searchbar() {
           Accept: "application/json",
         },
       };
-      //Inget som kan fångas
+
+      //Nothing to catch, therefor -> log status and return. (fix for bad request)
       const results = await fetch(queryString, options);
       if (results.status != 200) {
         console.error("Status code", results.status);
