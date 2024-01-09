@@ -54,7 +54,7 @@ function Searchbar() {
             <h3>General information</h3>
             <p>domain: {responseData.pulseDiveResult.domain} </p>
             <p>protocols: {responseData.pulseDiveResult.protocols} </p>
-            <p>technologies: {responseData.pulseDiveResult.technologies} </p> */}
+            <p>technologies: {responseData.pulseDiveResult.technologies} </p>
             <br />
             
             <h3>Security information</h3>
