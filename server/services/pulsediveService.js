@@ -23,8 +23,8 @@ async function fetchPulseDive(params) {
     const responseBody = await response.json();
 
     let wikiSummary = "N/A";
-    if (responseBody.threats && responseBody.threats.length > 0) {
-
+    
+    if (response.ok && (responseBody.threats && responseBody.threats.length > 0)) {
       const threatName = responseBody.threats[0].name;  //get first threat (if any)
       
       wikiSummary = await fetchThreatInfo(threatName);
