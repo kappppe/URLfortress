@@ -1,3 +1,4 @@
+const { fetchThreatInfo } = require("../services/threatService");
 async function fetchPulseDive(params) {
   try {
     const apiKey = process.env.pulseApiKey;
@@ -20,6 +21,18 @@ async function fetchPulseDive(params) {
     }
 
     const responseBody = await response.json();
+
+    let wikiSummary = "N/A";
+    if (responseBody.threats && responseBody.threats.length > 0) {
+
+      const threatName = responseBody.threats[0].name;  //get first threat (if any)
+      
+      wikiSummary = await fetchThreatInfo(threatName);
+      console.log('Wiki Summary:', wikiSummary);
+    } else {
+      console.log('No threats found in the response.');
+    }
+
     const clientResponseBody = {
       risk: responseBody.risk ?? "N/A",
       riskRecommended: responseBody.risk_recommended ?? "N/A",
@@ -27,6 +40,7 @@ async function fetchPulseDive(params) {
       threats: responseBody.threats ?? "N/A",
       port: responseBody.port ?? "N/A",
       protocol: responseBody.protocol ?? "N/A",
+      wikikummary: wikiSummary
     };
 
     return clientResponseBody;
