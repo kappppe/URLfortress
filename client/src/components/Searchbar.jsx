@@ -54,6 +54,7 @@ function Searchbar() {
           <div>
             <h3>General information</h3>
             <p>domain: {responseData.pulseDiveResult.domain} </p>
+            <p>isp: {responseData.abuseResult.isp} </p>
             <p>protocols: {responseData.pulseDiveResult.protocols} </p>
             <p>technologies: {responseData.pulseDiveResult.technologies} </p>
             <p>description: {responseData.pulseDiveResult.description}</p>
