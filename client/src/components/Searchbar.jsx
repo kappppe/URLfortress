@@ -6,12 +6,12 @@ function Searchbar() {
   const [responseData, setResponseData] = useState({});
 
   const handleChange = (event) => {
-    const inputValue = event.target.value.trim();       //check for empty chars.
+    const inputValue = event.target.value.trim();       //check and trim whitespace.
     setQuery(inputValue);
   };
   
   const handleKeyPress = (event) => {
-    if (event.key === "Enter" && query.trim() !== "") {     //check for empty chars.
+    if (event.key === "Enter" && query.trim() !== "") {     //check and trim whitespace.
       fetchData();
     }
   };
@@ -30,10 +30,19 @@ function Searchbar() {
 
       const results = await fetch(queryString, options);
       const jsonBody = await results.json();
-      console.log(jsonBody);
       setResponseData(jsonBody);
+    console.log("pre-error");
     } catch (error) {
-      console.error("Error fetching data:", error);
+      console.log("error");
+      //console.log("Tja")
+      //console.error("Error fetching data:", error);
+      if (error instanceof ServerError) {
+        console.log("FAN");
+        return;
+      }
+  
+      throw error;
+
     }
   };
 
