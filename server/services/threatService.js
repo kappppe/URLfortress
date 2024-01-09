@@ -23,7 +23,7 @@ async function fetchThreatInfo(indicator) {
     console.log(`Wiki Summary: ${wikisummary}`);
     return wikisummary;
   } catch (error) {
-    console.error("Error in ipApi service:", error);
+    console.error("Error in pulsedive service:", error);
     throw error;
   }
 }
