@@ -38,7 +38,7 @@ function Searchbar() {
       } else {
         const jsonBody = await results.json();
         setResponseData(jsonBody);
-        setError(null);       //resets error to enable new search
+        setError(null);       //resets error to enable the new search
       }
   };
 
