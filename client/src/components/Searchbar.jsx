@@ -62,7 +62,11 @@ function Searchbar() {
           <div className="flex justify-between">
             <div className="info">
               <h3>General information</h3>
-              <p>domain: {responseData.pulseDiveResult.domain} </p>
+              <p>
+                {" "}
+                <span>Domain: </span>
+                {responseData.pulseDiveResult.domain}{" "}
+              </p>
               <p>isp: {responseData.abuseResult.isp} </p>
               <p>protocols: {responseData.pulseDiveResult.protocols} </p>
               <p>technologies: {responseData.pulseDiveResult.technologies} </p>
