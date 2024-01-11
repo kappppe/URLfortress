@@ -90,7 +90,11 @@ function Searchbar() {
               <h3>Security information</h3>
               <p>
                 <span>Domain</span>
-                {responseData.pulseDiveResult?.domain}
+                {Array.isArray(responseData.pulseDiveResult?.domain)
+                  ? responseData.pulseDiveResult?.domain.map(
+                      (domain, index) => <div key={index}>{domain}</div>
+                    )
+                  : responseData.pulseDiveResult?.domain}
               </p>
               <p>
                 <span>ISP</span>
@@ -100,7 +104,14 @@ function Searchbar() {
               <p>IPv: {responseData.abuseResult?.ipVersion}</p>
               <p>
                 <span>Technologies</span>{" "}
-                {responseData.pulseDiveResult?.protocols}
+                <p>
+                  Protocols:
+                  {Array.isArray(responseData.pulseDiveResult?.protocols)
+                    ? responseData.pulseDiveResult?.protocols.map(
+                        (protocol, index) => <div key={index}>{protocol}</div>
+                      )
+                    : responseData.pulseDiveResult?.protocols}
+                </p>
               </p>
               <p>Technologies: {responseData.pulseDiveResult?.technologies} </p>
               <p>

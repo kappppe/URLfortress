@@ -76,6 +76,7 @@ nav {
 }
 nav ul {
   gap: 2em;
+  font-size: 15px;
 }
 span {
   color: rgb(93, 87, 76);
