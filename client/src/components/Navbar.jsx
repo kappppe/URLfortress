@@ -5,7 +5,7 @@ function Navbar() {
       <nav>
         <ul className="flex">
           <li>
-            <a href="#">Docs</a>
+            <a href="https://urlfortress1.docs.apiary.io/#">Docs</a>
           </li>
           <li>
             <a href="#">About</a>
