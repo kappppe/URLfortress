@@ -140,6 +140,9 @@ button i {
   max-width: 700px;
 }
 
+nav {
+  margin-block: 1.5rem;
+}
 nav ul {
   gap: 2em;
 }
