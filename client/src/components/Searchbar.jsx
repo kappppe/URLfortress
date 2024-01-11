@@ -7,12 +7,13 @@ function Searchbar() {
   const [error, setError] = useState(null);
 
   const handleChange = (event) => {
-    const inputValue = event.target.value.trim();       //check and trim whitespace.
+    const inputValue = event.target.value.trim(); //check and trim whitespace.
     setQuery(inputValue);
   };
-  
+
   const handleKeyPress = (event) => {
-    if (event.key === "Enter" && query.trim() !== "") {     //check and trim whitespace.
+    if (event.key === "Enter" && query.trim() !== "") {
+      //check and trim whitespace.
       fetchData();
     }
   };
@@ -21,25 +22,24 @@ function Searchbar() {
   const queryString = `${baseURL}${query}`;
 
   const fetchData = async () => {
+    const options = {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+      },
+    };
 
-      const options = {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-        },
-      };
+    //Nothing to catch, therefor -> log status and return. (fix for bad request)
+    const results = await fetch(queryString, options);
 
-      //Nothing to catch, therefor -> log status and return. (fix for bad request)
-      const results = await fetch(queryString, options);
-
-      if (results.status !== 200) {
-        console.error("Status code", results.status);
-        setError(`Error: ${results.status}`);
-      } else {
-        const jsonBody = await results.json();
-        setResponseData(jsonBody);
-        setError(null);       //resets error to enable the new search
-      }
+    if (results.status !== 200) {
+      console.error("Status code", results.status);
+      setError(`Error: ${results.status}`);
+    } else {
+      const jsonBody = await results.json();
+      setResponseData(jsonBody);
+      setError(null); //resets error to enable the new search
+    }
   };
 
   return (
@@ -59,16 +59,15 @@ function Searchbar() {
             <p>{error}</p>
           </div>
         ) : Object.keys(responseData).length > 0 ? (
-
           <div>
             <h3>General information</h3>
             <p>domain: {responseData.pulseDiveResult.domain} </p>
             <p>isp: {responseData.abuseResult.isp} </p>
             <p>protocols: {responseData.pulseDiveResult.protocols} </p>
             <p>technologies: {responseData.pulseDiveResult.technologies} </p>
-            <p>description: {responseData.pulseDiveResult.description}</p>
+            <p>description: {responseData.hostIoResult.description}</p>
             <br />
-            
+
             <h3>Security information</h3>
             <p>Rank: {responseData.hostIoResult?.rank}</p>
             <p>Facebook: {responseData.hostIoResult?.facebook}</p>
@@ -83,15 +82,28 @@ function Searchbar() {
               <p>whitelisted: {String(responseData.abuseResult?.whiteList)}</p>
             )}
             <p>threat occured: {responseData.pulseDiveResult.threat}</p>
-            <p>Wiki summary on { responseData.pulseDiveResult.threat + ": " + responseData.pulseDiveResult.wikisummary+""}</p>  
+            <p>
+              Wiki summary on{" "}
+              {responseData.pulseDiveResult.threat +
+                ": " +
+                responseData.pulseDiveResult.wikisummary +
+                ""}
+            </p>
             <br />
 
             <h3>Server location</h3>
-            <p>country: { responseData.ipApiResult.country + " " + "(" + responseData.ipApiResult.countryCode + ")"} </p>
-            <p>city: { responseData.ipApiResult.city}</p>
-            <p>zip: { responseData.ipApiResult.zip}</p>
-            <p>address: { responseData.pulseDiveResult.address}</p>
-            <br /> 
+            <p>
+              country:{" "}
+              {responseData.ipApiResult.country +
+                " " +
+                "(" +
+                responseData.ipApiResult.countryCode +
+                ")"}{" "}
+            </p>
+            <p>city: {responseData.ipApiResult.city}</p>
+            <p>zip: {responseData.ipApiResult.zip}</p>
+            <p>address: {responseData.pulseDiveResult.address}</p>
+            <br />
 
             {/* Conditionally render the map */}
             {responseData.ipApiResult ? (
@@ -104,7 +116,6 @@ function Searchbar() {
           <p>No data available. Please perform a search.</p>
         )}
       </section>
-
     </>
   );
 }
