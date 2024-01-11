@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import SimpleMap from "./MapContainer";
+import { MagnifyingGlass, TwitterLogo } from "@phosphor-icons/react";
 
 function Searchbar() {
   const [query, setQuery] = useState("");
@@ -51,7 +52,7 @@ function Searchbar() {
           placeholder="Enter URL/IP-address here..."
         ></input>
         <button type="button" onClick={fetchData}>
-          Search
+          <MagnifyingGlass />
         </button>
 
         {error ? (
@@ -63,42 +64,44 @@ function Searchbar() {
             <div className="info">
               <h3>General information</h3>
               <p>
-                {" "}
                 <span>Domain</span>
-                {responseData.pulseDiveResult.domain}{" "}
+                {responseData.pulseDiveResult?.domain}
               </p>
               <p>
                 <span>ISP</span>
-                {responseData.abuseResult.isp}{" "}
+                {responseData.abuseResult?.isp}{" "}
               </p>
               <p>
-                <span>Protocols</span> {responseData.pulseDiveResult.protocols}{" "}
+                <span>Protocols</span> {responseData.pulseDiveResult?.protocols}{" "}
               </p>
-              <p>technologies: {responseData.pulseDiveResult.technologies} </p>
-              <p>description: {responseData.hostIoResult.description}</p>
+              <p>technologies: {responseData.pulseDiveResult?.technologies} </p>
+              <p>description: {responseData.hostIoResult?.description}</p>
               <br />
 
               <h3>Security information</h3>
               <p>Rank: {responseData.hostIoResult?.rank}</p>
               <p>Facebook: {responseData.hostIoResult?.facebook}</p>
-              <p>Twitter: {responseData.hostIoResult?.twitter}</p>
+              <p>
+                <TwitterLogo weight="fill" color="#475F7C" />
+                {responseData.hostIoResult?.twitter}
+              </p>
               <p>score: {responseData.abuseResult?.score}</p>
               <p>ip: {responseData.abuseResult.ip}</p>
-              <p>ip version: {responseData.abuseResult.ipVersion}</p>
-              <p>usage: {responseData.abuseResult.usage}</p>
-              <p>total reports: {responseData.abuseResult.totalReports}</p>
+              <p>ip version: {responseData.abuseResult?.ipVersion}</p>
+              <p>usage: {responseData.abuseResult?.usage}</p>
+              <p>total reports: {responseData.abuseResult?.totalReports}</p>
               <p>risk: {responseData.pulseDiveResult?.risk}</p>
               {responseData.abuseResult?.whiteList !== undefined && (
                 <p>
                   whitelisted: {String(responseData.abuseResult?.whiteList)}
                 </p>
               )}
-              <p>threat occured: {responseData.pulseDiveResult.threat}</p>
+              <p>threat occured: {responseData.pulseDiveResult?.threat}</p>
               <p>
                 Wiki summary on{" "}
-                {responseData.pulseDiveResult.threat +
+                {responseData.pulseDiveResult?.threat +
                   ": " +
-                  responseData.pulseDiveResult.wikisummary +
+                  responseData.pulseDiveResult?.wikisummary +
                   ""}
               </p>
               <br />
@@ -113,16 +116,16 @@ function Searchbar() {
                 <h3>Server location</h3>
                 <p>
                   country:{" "}
-                  {responseData.ipApiResult.country +
+                  {responseData.ipApiResult?.country +
                     " " +
                     "(" +
-                    responseData.ipApiResult.countryCode +
+                    responseData.ipApiResult?.countryCode +
                     ")"}{" "}
                 </p>
-                <p>city: {responseData.ipApiResult.city}</p>
-                <p>zip: {responseData.ipApiResult.zip}</p>
-                <p>address: {responseData.pulseDiveResult.address}</p>
-                <SimpleMap center={responseData.ipApiResult} />
+                <p>city: {responseData.ipApiResult?.city}</p>
+                <p>zip: {responseData.ipApiResult?.zip}</p>
+                <p>address: {responseData.pulseDiveResult?.address}</p>
+                <SimpleMap center={responseData?.ipApiResult} />
               </div>
             ) : (
               <p>Loading map...</p>

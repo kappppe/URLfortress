@@ -66,9 +66,6 @@ button {
   border-top-right-radius: 8px;
 }
 
-button i {
-  color: white;
-}
 .info {
   min-width: 500px;
   max-width: 700px;
@@ -86,7 +83,7 @@ span {
   border-top: 1px solid rgb(26, 38, 57);
 }
 .logo {
-  color: rgb(40, 58, 87);
+  color: rgb(53, 77, 114);
   display: inline;
   border-top: none;
 }
