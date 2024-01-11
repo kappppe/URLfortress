@@ -96,7 +96,7 @@ const MapContainer = ({ center }) => {
   ];
 
   return (
-    <div style={{ height: "350px", width: "40%" }}>
+    <div style={{ height: "350px", width: "500px" }}>
       <GoogleMapReact
         bootstrapURLKeys={{ key: apiKey }}
         center={{ lat: center.lat, lng: center.long }}

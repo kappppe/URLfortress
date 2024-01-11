@@ -53,7 +53,7 @@ input {
   border-bottom-left-radius: 10px;
 }
 
-input::placeholder{
+input::placeholder {
   color: rgb(167, 167, 167);
 }
 
@@ -68,7 +68,7 @@ button {
   border-top-right-radius: 10px;
 }
 
-button i{
+button i {
   color: white;
 }
 
@@ -134,4 +134,8 @@ button i{
     transform: scale(1.2, 1.2);
     opacity: 0;
   }
+}
+.info {
+  min-width: 500px;
+  max-width: 700px;
 }

@@ -59,55 +59,62 @@ function Searchbar() {
             <p>{error}</p>
           </div>
         ) : Object.keys(responseData).length > 0 ? (
-          <div>
-            <h3>General information</h3>
-            <p>domain: {responseData.pulseDiveResult.domain} </p>
-            <p>isp: {responseData.abuseResult.isp} </p>
-            <p>protocols: {responseData.pulseDiveResult.protocols} </p>
-            <p>technologies: {responseData.pulseDiveResult.technologies} </p>
-            <p>description: {responseData.hostIoResult.description}</p>
-            <br />
+          <div className="flex justify-between">
+            <div className="info">
+              <h3>General information</h3>
+              <p>domain: {responseData.pulseDiveResult.domain} </p>
+              <p>isp: {responseData.abuseResult.isp} </p>
+              <p>protocols: {responseData.pulseDiveResult.protocols} </p>
+              <p>technologies: {responseData.pulseDiveResult.technologies} </p>
+              <p>description: {responseData.hostIoResult.description}</p>
+              <br />
 
-            <h3>Security information</h3>
-            <p>Rank: {responseData.hostIoResult?.rank}</p>
-            <p>Facebook: {responseData.hostIoResult?.facebook}</p>
-            <p>Twitter: {responseData.hostIoResult?.twitter}</p>
-            <p>score: {responseData.abuseResult?.score}</p>
-            <p>ip: {responseData.abuseResult.ip}</p>
-            <p>ip version: {responseData.abuseResult.ipVersion}</p>
-            <p>usage: {responseData.abuseResult.usage}</p>
-            <p>total reports: {responseData.abuseResult.totalReports}</p>
-            <p>risk: {responseData.pulseDiveResult?.risk}</p>
-            {responseData.abuseResult?.whiteList !== undefined && (
-              <p>whitelisted: {String(responseData.abuseResult?.whiteList)}</p>
-            )}
-            <p>threat occured: {responseData.pulseDiveResult.threat}</p>
-            <p>
-              Wiki summary on{" "}
-              {responseData.pulseDiveResult.threat +
-                ": " +
-                responseData.pulseDiveResult.wikisummary +
-                ""}
-            </p>
-            <br />
+              <h3>Security information</h3>
+              <p>Rank: {responseData.hostIoResult?.rank}</p>
+              <p>Facebook: {responseData.hostIoResult?.facebook}</p>
+              <p>Twitter: {responseData.hostIoResult?.twitter}</p>
+              <p>score: {responseData.abuseResult?.score}</p>
+              <p>ip: {responseData.abuseResult.ip}</p>
+              <p>ip version: {responseData.abuseResult.ipVersion}</p>
+              <p>usage: {responseData.abuseResult.usage}</p>
+              <p>total reports: {responseData.abuseResult.totalReports}</p>
+              <p>risk: {responseData.pulseDiveResult?.risk}</p>
+              {responseData.abuseResult?.whiteList !== undefined && (
+                <p>
+                  whitelisted: {String(responseData.abuseResult?.whiteList)}
+                </p>
+              )}
+              <p>threat occured: {responseData.pulseDiveResult.threat}</p>
+              <p>
+                Wiki summary on{" "}
+                {responseData.pulseDiveResult.threat +
+                  ": " +
+                  responseData.pulseDiveResult.wikisummary +
+                  ""}
+              </p>
+              <br />
 
-            <h3>Server location</h3>
-            <p>
-              country:{" "}
-              {responseData.ipApiResult.country +
-                " " +
-                "(" +
-                responseData.ipApiResult.countryCode +
-                ")"}{" "}
-            </p>
-            <p>city: {responseData.ipApiResult.city}</p>
-            <p>zip: {responseData.ipApiResult.zip}</p>
-            <p>address: {responseData.pulseDiveResult.address}</p>
-            <br />
+              <br />
+            </div>
 
             {/* Conditionally render the map */}
+
             {responseData.ipApiResult ? (
-              <SimpleMap center={responseData.ipApiResult} />
+              <div>
+                <h3>Server location</h3>
+                <p>
+                  country:{" "}
+                  {responseData.ipApiResult.country +
+                    " " +
+                    "(" +
+                    responseData.ipApiResult.countryCode +
+                    ")"}{" "}
+                </p>
+                <p>city: {responseData.ipApiResult.city}</p>
+                <p>zip: {responseData.ipApiResult.zip}</p>
+                <p>address: {responseData.pulseDiveResult.address}</p>
+                <SimpleMap center={responseData.ipApiResult} />
+              </div>
             ) : (
               <p>Loading map...</p>
             )}
