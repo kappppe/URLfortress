@@ -16,13 +16,7 @@ body {
   background: #18181b;
   color: rgb(237, 237, 237);
 }
-a {
-  color: white;
-}
-a:hover {
-  color: rgb(67, 67, 67);
-}
-
+/* ----------Utility classes------------- */
 .container {
   width: 90%;
   max-width: 1400px;
@@ -39,7 +33,7 @@ a:hover {
   align-items: center;
 }
 
-/* ----------------------------------------------------- */
+/* ---------Styling------------- */
 
 label {
   display: block;
@@ -48,15 +42,15 @@ label {
 
 input {
   width: 200px;
-  padding: 8px;
+  padding: 10px;
   margin-bottom: 16px;
   color: rgb(255, 255, 255);
   background-color: rgb(67, 67, 67);
-
+  border: none;
   outline: none;
   border-right: none;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
 }
 
 input::placeholder {
@@ -65,17 +59,36 @@ input::placeholder {
 
 button {
   background-color: gray;
-  padding: 8px;
+  padding: 10px;
   cursor: pointer;
-  border-left: none;
-  /*border: solid 2px lightgray;*/
-  border: solid 2px lightgray;
-  border-bottom-right-radius: 10px;
-  border-top-right-radius: 10px;
+  border: none;
+  border-bottom-right-radius: 8px;
+  border-top-right-radius: 8px;
 }
 
 button i {
   color: white;
+}
+.info {
+  min-width: 500px;
+  max-width: 700px;
+}
+
+nav {
+  margin-block: 1.5rem;
+}
+nav ul {
+  gap: 2em;
+}
+span {
+  color: gray;
+}
+
+a {
+  color: white;
+}
+a:hover {
+  color: rgb(67, 67, 67);
 }
 
 /* ---------Google maps pin------------- */
@@ -140,18 +153,4 @@ button i {
     transform: scale(1.2, 1.2);
     opacity: 0;
   }
-}
-.info {
-  min-width: 500px;
-  max-width: 700px;
-}
-
-nav {
-  margin-block: 1.5rem;
-}
-nav ul {
-  gap: 2em;
-}
-span {
-  color: gray;
 }
