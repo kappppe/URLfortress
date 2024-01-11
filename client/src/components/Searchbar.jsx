@@ -64,11 +64,16 @@ function Searchbar() {
               <h3>General information</h3>
               <p>
                 {" "}
-                <span>Domain: </span>
+                <span>Domain</span>
                 {responseData.pulseDiveResult.domain}{" "}
               </p>
-              <p>isp: {responseData.abuseResult.isp} </p>
-              <p>protocols: {responseData.pulseDiveResult.protocols} </p>
+              <p>
+                <span>ISP</span>
+                {responseData.abuseResult.isp}{" "}
+              </p>
+              <p>
+                <span>Protocols</span> {responseData.pulseDiveResult.protocols}{" "}
+              </p>
               <p>technologies: {responseData.pulseDiveResult.technologies} </p>
               <p>description: {responseData.hostIoResult.description}</p>
               <br />

@@ -81,14 +81,16 @@ nav ul {
   gap: 2em;
 }
 span {
-  color: gray;
+  color: rgb(93, 87, 76);
+  display: block;
+  border-top: 1px solid rgb(26, 38, 57);
 }
 
 a {
   color: white;
 }
 a:hover {
-  color: rgb(67, 67, 67);
+  color: rgb(26, 38, 57);
 }
 
 /* ---------Google maps pin------------- */
