@@ -9,12 +9,18 @@
 }
 
 body {
+  font-family: "Poppins", sans-serif;
+  font-size: 13px;
   min-height: 100vh;
+
   background: #18181b;
   color: rgb(237, 237, 237);
 }
 a {
   color: white;
+}
+a:hover {
+  color: rgb(67, 67, 67);
 }
 
 .container {
