@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import SimpleMap from "./MapContainer";
-import { MagnifyingGlass, TwitterLogo } from "@phosphor-icons/react";
+import {
+  MagnifyingGlass,
+  TwitterLogo,
+  FacebookLogo,
+  InstagramLogo,
+} from "@phosphor-icons/react";
 
 function Searchbar() {
   const [query, setQuery] = useState("");
@@ -63,49 +68,62 @@ function Searchbar() {
           <div className="flex justify-between">
             <div className="info">
               <h3>General information</h3>
+              <p>Ranking: {responseData.hostIoResult?.rank}</p>
+              <p>Usage: {responseData.abuseResult?.usage}</p>
+              <p>Description: {responseData.hostIoResult?.description}</p>
+              <p>
+                <span>Socials</span>
+              </p>
+              <p>
+                <FacebookLogo weight="fill" color="#475F7C" />
+                {responseData.hostIoResult?.facebook}
+              </p>
+              <p>
+                <InstagramLogo weight="fill" color="#475F7C" />
+                {responseData.hostIoResult?.twitter}
+              </p>
+              <p>
+                <TwitterLogo weight="fill" color="#475F7C" />
+                {responseData.hostIoResult?.twitter}
+              </p>
+              <br />
+              <h3>Security information</h3>
               <p>
                 <span>Domain</span>
                 {responseData.pulseDiveResult?.domain}
               </p>
               <p>
                 <span>ISP</span>
-                {responseData.abuseResult?.isp}{" "}
+                {responseData.abuseResult?.isp}
               </p>
+              <p>IP: {responseData.abuseResult?.ip}</p>
+              <p>IPv: {responseData.abuseResult?.ipVersion}</p>
               <p>
-                <span>Protocols</span> {responseData.pulseDiveResult?.protocols}{" "}
+                <span>Technologies</span>{" "}
+                {responseData.pulseDiveResult?.protocols}
               </p>
-              <p>technologies: {responseData.pulseDiveResult?.technologies} </p>
-              <p>description: {responseData.hostIoResult?.description}</p>
-              <br />
-
-              <h3>Security information</h3>
-              <p>Rank: {responseData.hostIoResult?.rank}</p>
-              <p>Facebook: {responseData.hostIoResult?.facebook}</p>
+              <p>Technologies: {responseData.pulseDiveResult?.technologies} </p>
               <p>
-                <TwitterLogo weight="fill" color="#475F7C" />
-                {responseData.hostIoResult?.twitter}
+                <span>Threat</span>
               </p>
-              <p>score: {responseData.abuseResult?.score}</p>
-              <p>ip: {responseData.abuseResult.ip}</p>
-              <p>ip version: {responseData.abuseResult?.ipVersion}</p>
-              <p>usage: {responseData.abuseResult?.usage}</p>
-              <p>total reports: {responseData.abuseResult?.totalReports}</p>
-              <p>risk: {responseData.pulseDiveResult?.risk}</p>
+              <p>Abuse score: {responseData.abuseResult?.score}</p>
+              <p>Risk: {responseData.pulseDiveResult?.risk}</p>
               {responseData.abuseResult?.whiteList !== undefined && (
                 <p>
                   whitelisted: {String(responseData.abuseResult?.whiteList)}
                 </p>
               )}
-              <p>threat occured: {responseData.pulseDiveResult?.threat}</p>
+              <p>Total reports: {responseData.abuseResult?.totalReports}</p>
+
               <p>
-                Wiki summary on{" "}
+                <span>Threat description</span>
+                <p>Occured threat: {responseData.pulseDiveResult?.threat}</p>
+                Wiki summary:
                 {responseData.pulseDiveResult?.threat +
                   ": " +
                   responseData.pulseDiveResult?.wikisummary +
                   ""}
               </p>
-              <br />
-
               <br />
             </div>
 
@@ -115,16 +133,16 @@ function Searchbar() {
               <div>
                 <h3>Server location</h3>
                 <p>
-                  country:{" "}
+                  Country:{" "}
                   {responseData.ipApiResult?.country +
                     " " +
                     "(" +
                     responseData.ipApiResult?.countryCode +
                     ")"}{" "}
                 </p>
-                <p>city: {responseData.ipApiResult?.city}</p>
-                <p>zip: {responseData.ipApiResult?.zip}</p>
-                <p>address: {responseData.pulseDiveResult?.address}</p>
+                <p>City: {responseData.ipApiResult?.city}</p>
+                <p>Zip: {responseData.ipApiResult?.zip}</p>
+                <p>Address: {responseData.pulseDiveResult?.address}</p>
                 <SimpleMap center={responseData?.ipApiResult} />
               </div>
             ) : (

@@ -10,7 +10,7 @@
 
 body {
   font-family: "Poppins", sans-serif;
-  font-size: 13px;
+  font-size: 14px;
   min-height: 100vh;
 
   background: #18181b;
@@ -94,7 +94,7 @@ a {
   color: white;
 }
 a:hover {
-  color: rgb(26, 38, 57);
+  color: rgb(93, 87, 76);
 }
 
 /* ---------Google maps pin------------- */

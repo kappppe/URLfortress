@@ -20,28 +20,33 @@ async function fetchPulseDive(params) {
       );
     }
 
-    console.log(response);
-
     const responseBody = await response.json();
-
+    console.log(responseBody);
     let wikiSummary = "N/A";
-    let threatName = "N/A"
-    
-    if (response.ok && (responseBody.threats && responseBody.threats.length > 0)) {
-      threatName = responseBody.threats[0].name;  //get first threat (if any)
-      
+    let threatName = "N/A";
+
+    if (
+      response.ok &&
+      responseBody.threats &&
+      responseBody.threats.length > 0
+    ) {
+      threatName = responseBody.threats[0].name; //get first threat (if any)
+
       wikiSummary = await fetchThreatInfo(threatName);
-      console.log('Wiki Summary:', wikiSummary);
+      console.log("Wiki Summary:", wikiSummary);
     } else {
-      console.log('No threats found in the response.');
+      console.log("No threats found in the response.");
     }
 
     const protocols = responseBody.attributes?.protocol ?? "N/A";
     const technology = responseBody.attributes?.technology ?? "N/A";
-    const description = responseBody.riskfactors?.map((factor) => factor.description).join(', ') ?? "N/A";
+    const description =
+      responseBody.riskfactors
+        ?.map((factor) => factor.description)
+        .join(", ") ?? "N/A";
 
     const clientResponseBody = {
-      domain: responseBody.properties?.ssl?.domain ?? "N/A", 
+      domain: responseBody.properties?.ssl?.domain ?? "N/A",
       address: responseBody.properties?.geo?.address ?? "N/A",
       risk: responseBody.risk ?? "N/A",
       riskRecommended: responseBody.risk_recommended ?? "N/A",
@@ -53,8 +58,6 @@ async function fetchPulseDive(params) {
       description: description,
       wikisummary: wikiSummary,
     };
-
-    console.log(clientResponseBody);
 
     return clientResponseBody;
   } catch (error) {
