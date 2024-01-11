@@ -8,7 +8,9 @@ function Navbar() {
             <a href="https://urlfortress1.docs.apiary.io/#">Docs</a>
           </li>
           <li>
-            <a href="#">About</a>
+            <a href="https://github.com/kappppe/URLfortress/blob/main/README.md">
+              About
+            </a>
           </li>
         </ul>
       </nav>
