@@ -85,6 +85,11 @@ span {
   display: block;
   border-top: 1px solid rgb(26, 38, 57);
 }
+.logo {
+  color: rgb(40, 58, 87);
+  display: inline;
+  border-top: none;
+}
 p:hover {
   background-color: rgb(26, 38, 57);
 }

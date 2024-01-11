@@ -1,7 +1,9 @@
 function Navbar() {
   return (
     <header className="container flex justify-between items-center">
-      <h1>urlFortress</h1>
+      <h1>
+        <span className="logo">url</span>Fortress
+      </h1>
       <nav>
         <ul className="flex">
           <li>
