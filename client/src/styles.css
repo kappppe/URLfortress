@@ -99,6 +99,9 @@ a:hover {
 }
 
 /* ---------Google maps pin------------- */
+.map {
+  margin-top: 20px;
+}
 .pin {
   width: 30px;
   height: 30px;

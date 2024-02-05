@@ -21,7 +21,6 @@ async function fetchPulseDive(params) {
     }
 
     const responseBody = await response.json();
-    console.log(responseBody);
     let wikiSummary = "N/A";
     let threatName = "N/A";
 

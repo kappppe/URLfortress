@@ -88,31 +88,28 @@ function Searchbar() {
               </p>
               <br />
               <h3>Security information</h3>
-              <p>
+              <div>
                 <span>Domain</span>
                 {Array.isArray(responseData.pulseDiveResult?.domain)
                   ? responseData.pulseDiveResult?.domain.map(
-                      (domain, index) => <div key={index}>{domain}</div>
+                      (domain, index) => <p key={index}>{domain}</p>
                     )
                   : responseData.pulseDiveResult?.domain}
-              </p>
+              </div>
               <p>
                 <span>ISP</span>
                 {responseData.abuseResult?.isp}
               </p>
               <p>IP: {responseData.abuseResult?.ip}</p>
               <p>IPv: {responseData.abuseResult?.ipVersion}</p>
-              <p>
-                <span>Technologies</span>{" "}
-                <p>
-                  Protocols:
-                  {Array.isArray(responseData.pulseDiveResult?.protocols)
-                    ? responseData.pulseDiveResult?.protocols.map(
-                        (protocol, index) => <div key={index}>{protocol}</div>
-                      )
-                    : responseData.pulseDiveResult?.protocols}
-                </p>
-              </p>
+              <div>
+                <span>Technologies</span> Protocols:
+                {Array.isArray(responseData.pulseDiveResult?.protocols)
+                  ? responseData.pulseDiveResult?.protocols.map(
+                      (protocol, index) => <p key={index}>{protocol}</p>
+                    )
+                  : responseData.pulseDiveResult?.protocols}
+              </div>
               <p>Technologies: {responseData.pulseDiveResult?.technologies} </p>
               <p>
                 <span>Threat</span>
@@ -126,15 +123,17 @@ function Searchbar() {
               )}
               <p>Total reports: {responseData.abuseResult?.totalReports}</p>
 
-              <p>
+              <div>
                 <span>Threat description</span>
-                <p>Occured threat: {responseData.pulseDiveResult?.threat}</p>
-                Wiki summary:
-                {responseData.pulseDiveResult?.threat +
-                  ": " +
-                  responseData.pulseDiveResult?.wikisummary +
-                  ""}
-              </p>
+                <p>Threat: {responseData.pulseDiveResult?.threat}</p>
+                <p>
+                  Wiki summary:
+                  {responseData.pulseDiveResult?.threat +
+                    ": " +
+                    responseData.pulseDiveResult?.wikisummary +
+                    ""}
+                </p>
+              </div>
               <br />
             </div>
 
