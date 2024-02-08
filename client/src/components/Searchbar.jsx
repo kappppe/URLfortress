@@ -13,13 +13,12 @@ function Searchbar() {
   const [error, setError] = useState(null);
 
   const handleChange = (event) => {
-    const inputValue = event.target.value.trim(); //check and trim whitespace.
+    const inputValue = event.target.value.trim();
     setQuery(inputValue);
   };
 
   const handleKeyPress = (event) => {
     if (event.key === "Enter" && query.trim() !== "") {
-      //check and trim whitespace.
       fetchData();
     }
   };
@@ -34,20 +33,21 @@ function Searchbar() {
         Accept: "application/json",
       },
     };
-
-    //Nothing to catch, therefor -> log status and return. (fix for bad request)
-    const results = await fetch(queryString, options);
-
-    if (results.status !== 200) {
-      console.error("Status code", results.status);
-      setError(`Error: ${results.status}`);
-    } else {
+    try {
+      const results = await fetch(queryString, options);
       const jsonBody = await results.json();
+
+      if (!results.ok) {
+        throw new Error(jsonBody.error);
+      }
+
       setResponseData(jsonBody);
-      setError(null); //resets error to enable the new search
+      console.log(jsonBody);
+      setError(null);
+    } catch (error) {
+      setError(error.message);
     }
   };
-
   return (
     <>
       <section className="container">
@@ -153,14 +153,17 @@ function Searchbar() {
                 <p>City: {responseData.ipApiResult?.city}</p>
                 <p>Zip: {responseData.ipApiResult?.zip}</p>
                 <p>Address: {responseData.pulseDiveResult?.address}</p>
-                <SimpleMap center={responseData?.ipApiResult} />
+                <SimpleMap
+                  key={JSON.stringify(responseData?.ipApiResult)}
+                  center={responseData?.ipApiResult}
+                />
               </div>
             ) : (
               <p>Loading map...</p>
             )}
           </div>
         ) : (
-          <p>No data available. Please perform a search.</p>
+          <p>Please perform a search.</p>
         )}
       </section>
     </>

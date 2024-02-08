@@ -28,7 +28,8 @@ async function fetchFullReport(req, res) {
     if (error && error.message && error.message.includes("invalid input")) {
       res.status(400).json({ error: "Please enter a valid domain/ip" });
     } else {
-      res.status(500).json({ error: "Internal server error" });
+      // Must pick another more relevant status code!
+      res.status(500).json({ error: "Domain/IP-address not found." });
     }
   }
 }
