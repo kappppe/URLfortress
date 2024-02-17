@@ -5,12 +5,18 @@ import {
   TwitterLogo,
   FacebookLogo,
   InstagramLogo,
+  CaretDown,
 } from "@phosphor-icons/react";
 
 function Searchbar() {
   const [query, setQuery] = useState("");
   const [responseData, setResponseData] = useState({});
   const [error, setError] = useState(null);
+  const [showDetails, setShowDetails] = useState(false);
+
+  const toggleDetails = () => {
+    setShowDetails(!showDetails);
+  };
 
   const handleChange = (event) => {
     const inputValue = event.target.value.trim();
@@ -114,14 +120,39 @@ function Searchbar() {
               <p>
                 <span>Threat</span>
               </p>
-              <p>Abuse score: {responseData.abuseResult?.score}</p>
-              <p>Risk: {responseData.pulseDiveResult?.risk}</p>
+              <div className="highlight" onClick={toggleDetails}>
+                <p>
+                  <CaretDown size={14} weight="fill" /> urlFortress assessment:{" "}
+                  {responseData?.assessmentScore} risk.
+                </p>
+                {showDetails && (
+                  <div>
+                    <p>AbuseIPDB score: {responseData.abuseResult?.score}</p>
+                    <p>PulseDive Risk: {responseData.pulseDiveResult?.risk}</p>
+                    {responseData.abuseResult?.whiteList !== undefined && (
+                      <p>
+                        whitelisted:{" "}
+                        {String(responseData.abuseResult?.whiteList)}
+                      </p>
+                    )}
+                    <p>
+                      Total reports: {responseData.abuseResult?.totalReports}
+                    </p>
+                  </div>
+                )}
+              </div>
+
+              {/* <p className="highlight">
+                urlFortress assessment: {responseData?.assessmentScore} risk
+              </p>
+              <p>AbuseIPDB score: {responseData.abuseResult?.score}</p>
+              <p>PulseDive Risk: {responseData.pulseDiveResult?.risk}</p>
               {responseData.abuseResult?.whiteList !== undefined && (
                 <p>
                   whitelisted: {String(responseData.abuseResult?.whiteList)}
                 </p>
               )}
-              <p>Total reports: {responseData.abuseResult?.totalReports}</p>
+              <p>Total reports: {responseData.abuseResult?.totalReports}</p> */}
 
               <div>
                 <span>Threat description</span>
@@ -136,8 +167,6 @@ function Searchbar() {
               </div>
               <br />
             </div>
-
-            {/* Conditionally render the map */}
 
             {responseData.ipApiResult ? (
               <div>

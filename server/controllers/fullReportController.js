@@ -3,6 +3,7 @@ const { fetchPulseDive } = require("../services/pulsediveService");
 const { fetchAbuse } = require("../services/abuseipdbService");
 const { checkToResolve } = require("./clientInputController");
 const { fetchIpCoordinates } = require("../services/ipApiService");
+const { urlFortressAssessment } = require("../services/assessmentService");
 
 async function fetchFullReport(req, res) {
   try {
@@ -14,15 +15,23 @@ async function fetchFullReport(req, res) {
       response.pulseDiveResult = await fetchPulseDive(params);
       response.abuseResult = await fetchAbuse(params);
       response.ipApiResult = await fetchIpCoordinates(params);
+      response.assessmentScore = await urlFortressAssessment(
+        response.abuseResult,
+        response.pulseDiveResult
+      );
     } else if (resolvedResult !== null) {
       response.hostIoResult = await fetchHostIo(params);
       response.pulseDiveResult = await fetchPulseDive(resolvedResult);
       response.abuseResult = await fetchAbuse(resolvedResult);
       response.ipApiResult = await fetchIpCoordinates(resolvedResult);
+      response.assessmentScore = await urlFortressAssessment(
+        response.abuseResult,
+        response.pulseDiveResult
+      );
     } else {
       throw new Error(`invalid input`);
     }
-
+    console.log(response.assessmentScore);
     res.status(200).json(response);
   } catch (error) {
     if (error && error.message && error.message.includes("invalid input")) {
