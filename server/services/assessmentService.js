@@ -12,22 +12,25 @@ const dataPointWeights = {
 };
 
 async function urlFortressAssessment(abuseResult, pulseDiveResult) {
-  const abuseScore = abuseResult.score || 0;
-  const reports = abuseResult.totalReports || 0;
-  const isWhiteListed = abuseResult.whiteList ? 0 : 1; //fix for "N/A"
-  const risk = pulseDiveResult.risk;
-  const riskWeight = dataPointWeights.risk[risk] || 0;
-  console.log(risk);
-  console.log(`Riskweight:${riskWeight}`);
-  console.log(`whitelist: ${isWhiteListed}`);
+  try {
+    const abuseScore = abuseResult.score;
+    const reports = abuseResult.totalReports;
+    const isWhiteListed = abuseResult.whiteList ? 0 : 1;
+    const risk = pulseDiveResult.risk;
+    const riskWeight = dataPointWeights.risk[risk] || 0;
 
-  const combinedScore =
-    (abuseScore / 100) * dataPointWeights.abuseScore +
-    reports * dataPointWeights.reports +
-    isWhiteListed * dataPointWeights.isWhiteListed +
-    riskWeight;
-  assessment = await AssessmentScore(combinedScore);
-  return assessment;
+    const combinedScore =
+      (abuseScore / 100) * dataPointWeights.abuseScore +
+      reports * dataPointWeights.reports +
+      isWhiteListed * dataPointWeights.isWhiteListed +
+      riskWeight;
+
+    const assessment = await AssessmentScore(combinedScore);
+    return assessment;
+  } catch (error) {
+    console.error("An error occurred in urlFortressAssessment:", error.message);
+    throw error;
+  }
 }
 
 function AssessmentScore(score) {

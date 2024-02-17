@@ -93,83 +93,85 @@ function Searchbar() {
                 {responseData.hostIoResult?.twitter}
               </p>
               <br />
-              <h3>Security information</h3>
-              <div>
-                <span>Domain</span>
-                {Array.isArray(responseData.pulseDiveResult?.domain)
-                  ? responseData.pulseDiveResult?.domain.map(
-                      (domain, index) => <p key={index}>{domain}</p>
-                    )
-                  : responseData.pulseDiveResult?.domain}
-              </div>
-              <p>
-                <span>ISP</span>
-                {responseData.abuseResult?.isp}
-              </p>
-              <p>IP: {responseData.abuseResult?.ip}</p>
-              <p>IPv: {responseData.abuseResult?.ipVersion}</p>
-              <div>
-                <span>Technologies</span> Protocols:
-                {Array.isArray(responseData.pulseDiveResult?.protocols)
-                  ? responseData.pulseDiveResult?.protocols.map(
-                      (protocol, index) => <p key={index}>{protocol}</p>
-                    )
-                  : responseData.pulseDiveResult?.protocols}
-              </div>
-              <p>Technologies: {responseData.pulseDiveResult?.technologies} </p>
-              <p>
-                <span>Threat</span>
-              </p>
-              <div className="highlight" onClick={toggleDetails}>
-                <p>
-                  <CaretDown size={14} weight="fill" /> urlFortress assessment:{" "}
-                  {responseData?.assessmentScore} risk.
-                </p>
-                {showDetails && (
+              <div className="m-height">
+                <h3>Security information</h3>
+                <div className="flex">
                   <div>
-                    <p>AbuseIPDB score: {responseData.abuseResult?.score}</p>
-                    <p>PulseDive Risk: {responseData.pulseDiveResult?.risk}</p>
-                    {responseData.abuseResult?.whiteList !== undefined && (
-                      <p>
-                        whitelisted:{" "}
-                        {String(responseData.abuseResult?.whiteList)}
-                      </p>
-                    )}
+                    <span>Domain</span>
+                    {Array.isArray(responseData.pulseDiveResult?.domain)
+                      ? responseData.pulseDiveResult?.domain.map(
+                          (domain, index) => <p key={index}>{domain}</p>
+                        )
+                      : responseData.pulseDiveResult?.domain}
+                  </div>
+                  <div>
                     <p>
-                      Total reports: {responseData.abuseResult?.totalReports}
+                      <span>ISP</span>
+                      {responseData.abuseResult?.isp}
+                    </p>
+                    <p>IP: {responseData.abuseResult?.ip}</p>
+                    <p>IPv: {responseData.abuseResult?.ipVersion}</p>
+                  </div>
+                  <div>
+                    <span>Technologies</span> Protocols:
+                    {Array.isArray(responseData.pulseDiveResult?.protocols)
+                      ? responseData.pulseDiveResult?.protocols.map(
+                          (protocol, index) => <p key={index}>{protocol}</p>
+                        )
+                      : responseData.pulseDiveResult?.protocols}
+                    <p>
+                      Technologies: {responseData.pulseDiveResult?.technologies}{" "}
                     </p>
                   </div>
-                )}
+                  <div>
+                    <p>
+                      <span>Threat</span>
+                    </p>
+                    <div className="highlight" onClick={toggleDetails}>
+                      <p>
+                        <CaretDown size={14} weight="fill" />{" "}
+                        {responseData?.assessmentScore} risk.
+                      </p>
+                      {showDetails && (
+                        <div>
+                          <p>
+                            AbuseIPDB score: {responseData.abuseResult?.score}
+                          </p>
+                          <p>
+                            PulseDive Risk: {responseData.pulseDiveResult?.risk}
+                          </p>
+                          {responseData.abuseResult?.whiteList !==
+                            undefined && (
+                            <p>
+                              whitelisted:{" "}
+                              {String(responseData.abuseResult?.whiteList)}
+                            </p>
+                          )}
+                          <p>
+                            Total reports:{" "}
+                            {responseData.abuseResult?.totalReports}
+                          </p>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
               </div>
-
-              {/* <p className="highlight">
-                urlFortress assessment: {responseData?.assessmentScore} risk
+              <span>Threat description</span>
+              <p>Threat: {responseData.pulseDiveResult?.threat}</p>
+              <p>
+                Wiki summary:
+                {responseData.pulseDiveResult?.threat +
+                  ": " +
+                  responseData.pulseDiveResult?.wikisummary +
+                  ""}
               </p>
-              <p>AbuseIPDB score: {responseData.abuseResult?.score}</p>
-              <p>PulseDive Risk: {responseData.pulseDiveResult?.risk}</p>
-              {responseData.abuseResult?.whiteList !== undefined && (
-                <p>
-                  whitelisted: {String(responseData.abuseResult?.whiteList)}
-                </p>
-              )}
-              <p>Total reports: {responseData.abuseResult?.totalReports}</p> */}
 
-              <div>
-                <span>Threat description</span>
-                <p>Threat: {responseData.pulseDiveResult?.threat}</p>
-                <p>
-                  Wiki summary:
-                  {responseData.pulseDiveResult?.threat +
-                    ": " +
-                    responseData.pulseDiveResult?.wikisummary +
-                    ""}
-                </p>
-              </div>
               <br />
             </div>
 
             {responseData.ipApiResult ? (
-              <div>
+              <div className="m-width">
                 <h3>Server location</h3>
                 <p>
                   Country:{" "}
