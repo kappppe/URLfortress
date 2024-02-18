@@ -48,7 +48,6 @@ function Searchbar() {
       }
 
       setResponseData(jsonBody);
-      console.log(jsonBody);
       setError(null);
     } catch (error) {
       setError(error.message);
