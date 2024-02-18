@@ -29,12 +29,9 @@ async function fetchPulseDive(params) {
       responseBody.threats &&
       responseBody.threats.length > 0
     ) {
-      threatName = responseBody.threats[0].name; //get first threat (if any)
+      threatName = responseBody.threats[0].name;
 
       wikiSummary = await fetchThreatInfo(threatName);
-      console.log("Wiki Summary:", wikiSummary);
-    } else {
-      console.log("No threats found in the response.");
     }
 
     const protocols = responseBody.attributes?.protocol ?? "N/A";
@@ -50,12 +47,12 @@ async function fetchPulseDive(params) {
       risk: responseBody.risk ?? "N/A",
       riskRecommended: responseBody.risk_recommended ?? "N/A",
       riskFactors: responseBody.riskfactors ?? "N/A",
-      threat: threatName ?? "N/A", // Added optional chaining here too
+      threat: threatName ?? "N/A",
       port: responseBody.port ?? "N/A",
-      protocols: protocols,
-      technologies: technology,
-      description: description,
-      wikisummary: wikiSummary,
+      protocols: protocols ?? "N/A",
+      technologies: technology ?? "N/A",
+      description: description ?? "N/A",
+      wikisummary: wikiSummary ?? "N/A",
     };
 
     return clientResponseBody;

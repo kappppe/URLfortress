@@ -34,7 +34,6 @@ async function urlFortressAssessment(abuseResult, pulseDiveResult) {
 }
 
 function AssessmentScore(score) {
-  console.log(score);
   if (score >= 0.8) {
     return "High";
   } else if (score >= 0.5) {

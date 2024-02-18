@@ -1,5 +1,5 @@
 async function fetchThreatInfo(indicator) {
-  try{
+  try {
     const apiKey = process.env.pulseApiKey;
     const baseURL = "https://pulsedive.com/api/info.php";
     const pretty = "1";
@@ -17,7 +17,6 @@ async function fetchThreatInfo(indicator) {
       );
     }
     const responseBody = await response.json();
-    
     const wikisummary = responseBody.wikisummary;
     return wikisummary;
   } catch (error) {

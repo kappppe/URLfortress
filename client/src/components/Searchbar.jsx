@@ -158,14 +158,7 @@ function Searchbar() {
               </div>
               <span>Threat description</span>
               <p>Threat: {responseData.pulseDiveResult?.threat}</p>
-              <p>
-                Wiki summary:
-                {responseData.pulseDiveResult?.threat +
-                  ": " +
-                  responseData.pulseDiveResult?.wikisummary +
-                  ""}
-              </p>
-
+              <p>Wiki summary: {responseData.pulseDiveResult?.wikisummary}</p>
               <br />
             </div>
 

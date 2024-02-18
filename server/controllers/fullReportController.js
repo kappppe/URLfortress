@@ -31,7 +31,6 @@ async function fetchFullReport(req, res) {
     } else {
       throw new Error(`invalid input`);
     }
-    console.log(response.assessmentScore);
     res.status(200).json(response);
   } catch (error) {
     if (error && error.message && error.message.includes("invalid input")) {
